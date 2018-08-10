@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+	body
+	{
+		margin:30px;
+	}
+	div {
+		width: 500px;
+		padding: 35px;
+		background-color: yellow;
+		border:10px solid black;
+	}
+	#div1 {
+		background-clip: content-box; 
+		/*背景颜色只能覆盖到内容区域，其余地方为默认颜色区域*/
+	}
+	#div2 {
+		background-clip: border-box; 
+	}
+	#div3 {
+		background-clip: padding-box; 
+	}
+	</style>
+<!-- IE9+、Firefox、Opera、Chrome 以及 Safari 支持 background-clip 属性。
+
+注释：Internet Explorer 8 以及更早的版本不支持 background-clip 属性。
+
+语法
+background-clip: border-box|padding-box|content-box;
+值	描述	测试
+border-box	背景被裁剪到边框盒。	
+padding-box	背景被裁剪到内边距框。	
+content-box	背景被裁剪到内容框。	
+-->
+<p>content-box	背景被裁剪到内容框。	</p>
+<div id="div1">
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。
+</div>
+<p>border-box	背景被裁剪到内容框。	</p>
+<div id="div2">
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。
+</div>
+<p>padding-box	背景被裁剪到内容框。	</p>
+<div id="div3">
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。这是文本。
+这是文本。
+</div>
+</body>
+</html>
