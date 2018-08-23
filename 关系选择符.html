@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*包含选择符所有a下的为红色*/
+			.seon1 a {
+				color: red; 
+			}
+			/*seon2变为黄色，相邻的同级元素*/
+			.seon1+div {
+				background: yellow;
+			}
+			/*第一个a显示绿色，子代选择符*/
+			.seon1 > a {
+				color: green;
+			}
+			/*兄弟选择符，Seon的同级兄弟显示绿色*/
+			.seon1 ~ div {
+				background: green;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="fader">
+			<div class="seon1">
+				<a href="">html</a>
+				<div class="garndson">
+					<a href="">css</a>
+				</div>
+			</div>
+			<div class="son2">son2</div>
+			<div class="son3">son3</div>
+		</div>
+	</body>
+
+</html>
