@@ -1,6 +1,8 @@
 # CSS3
+
 css和css3基础知识点大全
-###什么是css
+
+### 什么是css
 > css层叠样式表，CSS3知识CSS2的升级版本，在2的基础上增加了好多新的特性
 > 前缀        浏览器
 > - [-webkit]   chrome和safari
@@ -8,7 +10,7 @@ css和css3基础知识点大全
 > - [-ms]   	IE
 > - [-O]   		Opera
 
-###CSS能做什么？
+### CSS能做什么？
 
 > 1、CSS把很多以前需要使用图片和脚本来实现的效果、甚至动画效果，只需要短短几行代码就能搞定。比如圆角，图片边框，文字阴影和盒阴影，过渡、动画等。
 
@@ -20,7 +22,7 @@ css和css3基础知识点大全
 
 > 目的：将表现与结构分离。
 
-###CSS的选择符可以分成:
+### CSS的选择符可以分成:
 - [x] 通配选择符
 - 1.通配选择符 *
 
@@ -289,13 +291,13 @@ css和css3基础知识点大全
 
 -----------------------------------------------
 
-##控制非中文字体换行规则
+## 控制非中文字体换行规则
 > - 这个属性是基于该容器允许换行的前提下才会生效，例如之前已经设置了white-space:nowrap,则该属性无效
 > - 语法： word-break: normal | break-all
 > - normal 依照亚洲语言和非亚洲语言的文本规则，允许在字内换行
 > - break-all 允许非亚洲语言文本行的任意字内断开，例如连续的英文字母和数字
 
-##小结
+## 小结
 - white-space:    一般用于强制文本单行显示。搭配overflow:hidden和text-overflow:ellipsis使用，
 	      达到文字溢出显示省略号处理 。
 
@@ -308,7 +310,7 @@ css和css3基础知识点大全
 	        则该属性无效.
  	        若设置word-break:normal;则letter作为一个单词是不会换行的
 
-#CSS布局
+# CSS布局
 > 传统布局div + css
 ```
 <div id="header">页面头部</div>
@@ -335,14 +337,14 @@ css和css3基础知识点大全
 <footer>页脚</footer>
 ```
 -  ![主流布局样式] (http://www.html5jscss.com/pic/htmljscss/html5-layout.jpg)
-###块级元素
+### 块级元素
 - 常见的块级元素：
 > `div h1~h6 p section aside article hr dl dt
 				dd form footer table`
 				
 css语法： display：block
 
-###行内元素
+### 行内元素
 - 常见的行内元素：
 > `span、a、input、select、textarea、sub、sup、label、img、i、b、em、br、video、audio、 canvas`
 
@@ -351,7 +353,7 @@ css 语法: display: inline
 注意:
 input、select、textarea、 img  置换元素（通过属性来控制显示的内容）。这类特殊的元素都自带了宽高，所以这种元素可以设置宽高和设置垂直方向的边距(margin、padding)。
 
-###块级元素与行内元素区别
+### 块级元素与行内元素区别
 1、块级元素会独占一行，其宽度自动填满其父元素的宽高
 
 行内元素不会独占一行，相邻的行内元素会排列在同一行，若一行排不下，会自动换行。其宽度会随内容的变化而变化
@@ -362,7 +364,7 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 但是垂直方向的padding-top,padding-bottom,margin-top,margin-bottom无效（水平方向有效，垂直方向无效）
 
 
-###元素的定位
+### 元素的定位
 
 语法：position： **static** | **absolute** | **relative** | **fixed**
 > static: 无定位，默认值
