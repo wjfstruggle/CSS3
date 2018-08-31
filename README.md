@@ -289,3 +289,96 @@ css和css3基础知识点大全
 
 -----------------------------------------------
 
+##控制非中文字体换行规则
+> - 这个属性是基于该容器允许换行的前提下才会生效，例如之前已经设置了white-space:nowrap,则该属性无效
+> - 语法： word-break: normal | break-all
+> - normal 依照亚洲语言和非亚洲语言的文本规则，允许在字内换行
+> - break-all 允许非亚洲语言文本行的任意字内断开，例如连续的英文字母和数字
+
+##小结
+- white-space:    一般用于强制文本单行显示。搭配overflow:hidden和text-overflow:ellipsis使用，
+	      达到文字溢出显示省略号处理 。
+
+- word-spacing:   定义元素中字之间插入多少空白符。“字” 定义为由空白符包围的一个字符串,即
+	      “”abc” “efg“  两者为两个字符串可以使用负值.
+
+- letter-spacing:   控制段落的文字间的距离,”字”定义为每一个字符,即ab为两个字符,可以使用负值
+
+- word-break:       这个属性是基于该容器允许换行的前提下才会生效，如之前已设置white-space:nowrap,
+	        则该属性无效.
+ 	        若设置word-break:normal;则letter作为一个单词是不会换行的
+
+#CSS布局
+> 传统布局div + css
+```
+<div id="header">页面头部</div>
+
+<div id="content">
+	<div id="left"></div>
+	<div id="right"></div>
+</div>
+
+<div id="footer">页脚</div>
+> 并列与嵌套div结构
+```
+- ![传统布局样式](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535351869334&di=34374b8490d6a17c20dfbb119ecd6900&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160301%2F20160301092939_5974.png)
+
+- 设配IE9以及主流手机端页面布局方式
+```
+<header>页面头部
+	<nav>导航</nav>
+</header>
+<section>
+	<aside> </aside>
+	<article></article>
+</section>
+<footer>页脚</footer>
+```
+-  ![主流布局样式] (http://www.html5jscss.com/pic/htmljscss/html5-layout.jpg)
+###块级元素
+- 常见的块级元素：
+> `div h1~h6 p section aside article hr dl dt
+				dd form footer table`
+				
+css语法： display：block
+
+###行内元素
+- 常见的行内元素：
+> `span、a、input、select、textarea、sub、sup、label、img、i、b、em、br、video、audio、 canvas`
+
+css 语法: display: inline
+
+注意:
+input、select、textarea、 img  置换元素（通过属性来控制显示的内容）。这类特殊的元素都自带了宽高，所以这种元素可以设置宽高和设置垂直方向的边距(margin、padding)。
+
+###块级元素与行内元素区别
+1、块级元素会独占一行，其宽度自动填满其父元素的宽高
+
+行内元素不会独占一行，相邻的行内元素会排列在同一行，若一行排不下，会自动换行。其宽度会随内容的变化而变化
+
+2、块级元素可以设置width和height属性，行内元素设置宽高无效[注意：块级元素技术设置了宽高，但是仍然独占一行]
+
+3、块级元素可以设置margin和padding。行内元素的水平方向的padding-left，right;margin-left，right;都产生边距效果，
+但是垂直方向的padding-top,padding-bottom,margin-top,margin-bottom无效（水平方向有效，垂直方向无效）
+
+
+###元素的定位
+
+语法：position： **static** | **absolute** | **relative** | **fixed**
+> static: 无定位，默认值
+
+> absolute: 绝对定位
+- 脱离文档流
+- 通过top,right,bottom,left定位
+- 如果父元素position为static，将以body坐标原点定位
+- 如果父元素position为relative，将以父元素进行定位
+
+> relative: 相对定位
+- 相对定位（相对自己原来的位置而言）
+- 不脱离文档流
+- 参考自身静态位置通过top,right,bottom,left定位
+
+> fixed: 固定定位
+- 固定定位其实是绝对定位的特殊形式；固定定位相对浏览器窗口而固定
+而不是相对其包含元素;即使页面滚动了，他仍然处于浏览器窗口中跟原来的一样的地方
+
