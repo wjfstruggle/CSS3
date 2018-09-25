@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box {
+				background: skyblue;
+				text-align: center;
+				/*
+				 * 行高谷歌浏览器的默认1.32倍
+				 * 撑起内容高度的不是字体大小，而是行高
+				 * 多行文字垂直居中：
+				 * 	1、先设置父级元素的行高和高度一致
+				 * 	2、重新设置子元素内部的高度,具有继承性
+				 */
+				font-size: 15px;
+				line-height: 60px;
+				/*line-height: 100px;*/
+			}
+			
+			.box span {
+				display: inline-block;
+				vertical-align: middle;
+				line-height: 1;
+			}
+			.box a {
+				/*display: inline-block;
+				line-height: 1;*/
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<span>
+				行高<br />	
+				行高
+			</span>
+		</div>
+		<p></p>
+		<div class="box">
+			<a>
+				行高<br />	
+				行高
+			</a>
+		</div>
+		<p>hhh</p>
+	</body>
+
+</html>
