@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img {
+				width: 100px;
+			}			
+			@keyframes rotatings{
+				from{
+					transform: rotate(0);
+				}
+				to{
+					transform: rotate(180deg);
+				}
+			}
+			img {
+				animation: rotatings 20s inherit;
+			}
+			@keyframes changeColor{
+				from{
+					background: red;
+				}
+				to{
+					background: blue;
+				}
+			}
+			p {
+				animation: changeColor 2s infinite;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			动画效果演示
+		-->
+		<div>
+			<img src="logo.svg"/>
+		</div>
+		<p>动画</p>
+	</body>
+</html>

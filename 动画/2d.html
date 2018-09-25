@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		div {
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+			background: red;
+			transform: translate(50px, 100px);
+			/*-ms-transform: translate(50px, 100px);*/
+		}
+		div
+			{
+			/* rotate(30deg) 把元素顺时针旋转 30 度。*/
+			transform: rotate(30deg);
+			-ms-transform: rotate(30deg);		/* IE 9 */
+			-webkit-transform: rotate(30deg);	/* Safari and Chrome */
+			-o-transform: rotate(30deg);		/* Opera */
+			-moz-transform: rotate(30deg);		/* Firefox */
+			}
+			div
+				{
+					/* scale(2,4) 把宽度转换为原始尺寸的 2 倍，把高度转换为原始高度的 4 倍。*/
+				transform: scale(2,4);
+				-ms-transform: scale(2,4);	/* IE 9 */
+				-webkit-transform: scale(2,4);	/* Safari 和 Chrome */
+				-o-transform: scale(2,4);	/* Opera */
+				-moz-transform: scale(2,4);	/* Firefox */
+				}
+				div
+					{
+					transform: skew(30deg,20deg);
+					-ms-transform: skew(30deg,20deg);	/* IE 9 */
+					-webkit-transform: skew(30deg,20deg);	/* Safari and Chrome */
+					-o-transform: skew(30deg,20deg);	/* Opera */
+					-moz-transform: skew(30deg,20deg);	/* Firefox */
+					}
+					div
+						{
+						transform:matrix(0.866,0.5,-0.5,0.866,0,0);
+						-ms-transform:matrix(0.866,0.5,-0.5,0.866,0,0);		/* IE 9 */
+						-moz-transform:matrix(0.866,0.5,-0.5,0.866,0,0);	/* Firefox */
+						-webkit-transform:matrix(0.866,0.5,-0.5,0.866,0,0);	/* Safari and Chrome */
+						-o-transform:matrix(0.866,0.5,-0.5,0.866,0,0);		/* Opera */
+						}
+	</style>
+</head>
+<body>
+	<!-- 
+	CSS3 转换
+	通过 CSS3 转换，我们能够对元素进行移动、缩放、转动、拉长或拉伸
+	Internet Explorer 10、Firefox 以及 Opera 支持 transform 属性。
+
+	Chrome 和 Safari 需要前缀 -webkit-。
+
+	注释：Internet Explorer 9 需要前缀 -ms-。
+
+	2D 转换
+	在本章中，您将学到如下 2D 转换方法：
+
+	translate() 元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数：
+	rotate()  元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转。
+	scale()  放大缩小
+	skew()   元素翻转给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）参数：
+	matrix() 方法把所有 2D 转换方法组合在一起。方法需要六个参数，包含数学函数，允许您：旋转、缩放、移动以及倾斜元素。
+	 -->
+	 <div>
+	 	12
+	 </div>
+</body>
+</html>
