@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				font-size: 12px;
+			}
+			dl>dt {
+				background: grey;
+			}
+			
+			dt+dt {
+				background: blue;
+			}
+			
+			dl>dd>a {
+				color: red;
+			}
+			
+			p {
+				background: #ccc;
+			}
+			
+			.one+p {
+				font-size: 30px;
+			}
+			p > a:hover {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<dl>
+			<dt>背景色为grey</dt>
+			<dt>背景色blue</dt>
+			<dd>
+				<a href="#">字体为红色</a>
+			</dd>
+		</dl>
+		<p class="one">所有的p元素背景色为灰色</p>
+		<p>所有的p元素背景色为灰色，且字体大小为30px
+			<a href="">伪类效果，鼠标移过去显示红色</a>
+		</p>
+		<p>所有的p元素背景色为灰色</p>
+		<p>所有的p元素背景色为灰色</p>
+		<p>所有的p元素背景色为灰色</p>
+	</body>
+
+</html>

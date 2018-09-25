@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*子代选择器*/
+			
+			div > a {
+				background: red;
+			}
+			
+			div > span > a {
+				background: #67B374;
+			}
+			
+			p:first-of-type {
+				background: #0000FF;
+			}
+			/*相邻选择器，选择紧贴在E元素之后F元素*/
+			p+ p {
+				background: #808080;
+			}
+			.demo_1 {}
+			/*选择E元素所有兄弟元素F。*/
+			li ~ li {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<a>背景色是#E61061</a>
+			<span>
+				<a>背景色是#67B374</a>
+        	</span>
+		</div>
+		<p class="first">背景色是#0000FF</p>
+		<p>背景色是#808080</p>
+		<p>背景色是#808080</p>
+		
+		
+		
+		<ul class="demo_1">
+			<li>我是儿子
+				<!--<ul>
+					<li>我是孙子</li>
+				</ul>-->
+			</li>
+			<li>我是儿子</li>
+			<li>我是儿子</li>
+		</ul>
+	</body>
+
+</html>
