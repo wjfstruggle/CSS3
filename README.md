@@ -4,9 +4,11 @@
 css和css3基础知识点大全
 
 - [什么是css](#什么是css)
-- [元素的定位](#元素的定位)
+- [css引入](#css引入)
 - [CSS的选择符](#CSS的选择符)
+- [元素的定位](#元素的定位)
 - [文本](#文本)
+- [边框](#边框)
 
 <a name="什么是css"></a>
 ### 什么是css
@@ -29,10 +31,72 @@ css和css3基础知识点大全
 
 > 目的：将表现与结构分离。
 
+<a name="css引入"></a>
+### css的引入：
+
+**3中引入方式**
+
+1、行内引入
+
+ 指的是将css样式编码直接编写在HTML标签的style属性中 **注意这种方式的引入CSS，是不需要写选择器的。
+**
+		
+		例：
+		
+			<body style="background-color:#ccccc;">
+		
+			<h1 style="font-size:12px; color:#ff0000;">这是一个标题</h1>
+
+
+2. 页内引用	
+
+页内引用作为页面中的一个单独部分，由```<style></style>```标签定位在```<head></head>```之中。
+
+	例：
+			<style type="text/css">
+				div {
+					color: blue;
+					font-size: 16px;
+				}
+			</style>
+
+3、外部引入
+	
+外部样式表是CSS应用中最好的一种形式，它将CSS样式代码单独放在一个外部文件中，再由网页进行调用。
+		
+		如：	
+		style.css	:
+	
+		body {
+		       background-color:#cccccc;
+		}
+	
+		<link rel="stylesheet" type="text/css" href="style.css" />
+
+**优先级比较**
+
+- 优先级依次是：就近原则
+- !important > 行内 > 页内 > 页外
+- !important要慎用，因为优先级过高
+- 选择器的权值累加也会影响优先级
+
 <a name="CSS的选择符"></a>
 
 ### CSS的选择符:
 
+大致分为：
+
+
+- [x] 通配选择符
+- [x] 元素选择符
+- [x] 群组选择符
+- [x] 关系选择符
+- [x] id 及 class 选择符
+- [x] 伪类选择符（部分扩展学习）
+- [x] 属性选择符（扩展学习）
+- [x] 伪对象选择符（扩展学习）
+
+------------------------------------------------
 - [x] 通配选择符
 - 1.通配选择符 *
 
@@ -121,7 +185,56 @@ css和css3基础知识点大全
 			<div class="son2">son2</div>
 			<div class="son3">son3</div>
 		</div>
-
+		
+事列2：
+		
+		<style type="text/css">
+			/*子代选择器*/
+			
+			div > a {
+				background: red;
+			}
+			
+			div > span > a {
+				background: #67B374;
+			}
+			
+			p:first-of-type {
+				background: #0000FF;
+			}
+			/*相邻选择器，选择紧贴在E元素之后F元素*/
+			p+ p {
+				background: #808080;
+			}
+			.demo_1 {}
+			/*选择E元素所有兄弟元素F。*/
+			li ~ li {
+				color: red;
+			}
+			<body>
+		<div>
+			<a>背景色是#E61061</a>
+			<span>
+				<a>背景色是#67B374</a>
+        	</span>
+		</div>
+		<p class="first">背景色是#0000FF</p>
+		<p>背景色是#808080</p>
+		<p>背景色是#808080</p>
+		
+		
+		
+		<ul class="demo_1">
+			<li>我是儿子
+				<!--<ul>
+					<li>我是孙子</li>
+				</ul>-->
+			</li>
+			<li>我是儿子</li>
+			<li>我是儿子</li>
+		</ul>
+	</body>
+		</style>
 ```
 
 -----------------------------------------------
@@ -161,7 +274,7 @@ css和css3基础知识点大全
 - [x] 伪类选择器
 
 | 选择符           | 版本         |  描述        |
-| -------------------------   | ----------  | :----------:  |
+| :-------------------------:   | :----------: | :----------:  |
 | E:link    | css1 |   设置超链接a在未被访问前的样式。    |
 | E:visited    | css1 |   设置超链接a在已被访问过时的样式。    |
 | E:hover    | css1/2 |   设置元素在鼠标悬停是的样式。    |
@@ -184,6 +297,109 @@ css和css3基础知识点大全
 | E:disabled    | css3 |   匹配用户界面上处于不可用状态的元素E。    |
 | E:target    | css3 |   匹配相关URL指向的元素。    |
 
+> 伪类：
+	
+- 1、交互效果
+- 2、选择第n个元素
+	
+	
+		<style type="text/css">
+			/*设置超链接a在未被访问前的样式。*/
+			a:link {
+				color: #D30408;
+			}
+			/*设置超链接a在其链接地址已被访问过时的样式。*/
+			a:visited {
+				color: blue;
+			}
+			/*设置元素在其鼠标悬停时的样式。*/
+			a:hover {
+				font-weight: bold;
+			}
+			/*设置元素在被用户激活(在鼠标点击与释放之间发生的事件)时的样式。*/
+			a:active {
+				text-decoration: none;
+			}
+			/*设置元素在成为输入焦点(该元素的onfocus事件发生)时的样式。*/
+			input:focus {
+				outline: none;
+			}
+			/*勾选CheckBox选中状态*/
+			input:checked + label {
+				color: red;
+			}
+		</style>
+		
+		<a href="#">点我，有惊喜</a>
+		<input type="text" name="" id="" value="" />
+		<!--勾选CheckBox，让label也切换样式-->
+		<input type="checkbox" checked="checked" id="check"/>
+		<label for="check">选中		
+		</label>
+
+* 伪类选择器child系列
+	- 选择器：第几个儿子
+	- nth里面的括号要传入的1开始的值，可以结合未知数n来使用
+	
+			/*匹配父元素的第一个子元素E。*/
+			ul li:first-child {
+				color: blue;
+			}
+			/*匹配父元素的最后一个子元素E。*/
+			ul li:last-child {
+				color: blue;
+			}
+			/*匹配父元素的第n个子元素E。*/
+			ul li:nth-child(2n) {
+				background: red;
+			}
+			/*匹配不含有s选择符的元素E,除了第二个选择器以外，其余字体大小为20px*/
+			ul li:not(:nth-child(2)) {
+				font-size: 20px;
+			}
+			<ul>
+			<li>伪类选择器1</li>
+			<li>伪类选择器2</li>
+			<li>伪类选择器3</li>
+			<li>伪类选择器4</li>
+			<li>伪类选择器5</li>
+		</ul>	
+**第n个儿子和同类型的才能匹配**
+
+- span无效果
+
+		ul li:nth-child(2) {
+			text-decoration: underline;
+		}
+		<ul>
+			<li>伪类选择器1</li>
+			<span>伪类选择器2</span>
+			<li>伪类选择器3</li>
+			<li>伪类选择器4</li>
+			<li>伪类选择器5</li>
+		</ul>
+		
+相反，type类型的没child限制
+
+		ol li:first-of-type {
+			font-weight: bold;
+		}
+		/*第2n个li出现效果*/
+		ol li:nth-of-type(2n) {
+			letter-spacing: 5px;
+		}
+			
+		<ol>
+			<li>匹配同类型中的选择器1</li>
+			<span>匹配同类型中的选择器2</span>
+			<li>匹配同类型中的选择器3</li>
+			<li>匹配同类型中的选择器4</li>
+			<li>匹配同类型中的选择器5</li>
+			<li>匹配同类型中的选择器6</li>
+			<li>匹配同类型中的选择器7</li>
+		</ol>
+**[返回目录](#zore)**
+
 -----------------------------------------------
 
 - [x] 属性选择器
@@ -198,7 +414,7 @@ css和css3基础知识点大全
 | E[attr*="val"]    | css3 |   选择具有att属性且属性值为包含val的字符串的E元素。    |
 | E[attr\="val"]    | css3 |   选择具有att属性且属性值且以val开头并且用"-"分隔的字符串的E元素。   |
 
-事列：
+事列1：
 ```
 <style type="text/css">
 			a {
@@ -229,9 +445,44 @@ css和css3基础知识点大全
 		<a href="##" title="box1">我的背景想变成蓝色</a>
 		<a href="##" title="there is two boxs">我的背景想变成蓝色</a>
 
-	</body>
+事列2：
 
+	</body>
+			input[type="button"] {
+				font-size: 30px;
+			}
+			
+			input[type] {
+				border: 1px solid #C40D0E;
+			}
+			/*选择具有att属性且属性值为以val开头的字符串的E元素。*/
+			
+			input[name^="p"] {
+				border-color: blue;
+			}
+			/*选择具有att属性且属性值为以val结尾的字符串的E元素。*/
+			
+			input[name$="s"] {
+				border-color: green;
+			}
+			
+			input[value*="hello"] {
+				border-color: green;
+			}
+			/*选择具有att属性且属性值为以val开头并用连接符"-"分隔的字符串的E元素。 */
+			
+			input[data-type|="dd"] {
+				border-color: pink;
+			}
+	<input type="button" id="" value="btn" />
+	<input type="submit" id="" name="" />
+	<input type="radio" name="" id="" value="radio" /><label for=""></label>
+	<input type="password" name="pass" value="hello" />
+	<input type="text" name="pserachs" value="hello" data-type="dd-a">
+	<input type="text" name="pserachs" value="hello" data-type="dd-a">
+	<input type="text" name="pserachs" value="hello" data-type="dd">
 ```
+**[返回目录](#zore)**
 
 -----------------------------------------------
 
@@ -458,4 +709,28 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
   - 当z-index未定义或者值为auto时，在IE6,7下会创建新的局部层叠上下文，而在高级浏览器中，按照规范不产生新的局部层叠上下文
   
 **[返回目录](#zore)**
+
+<a name="边框"></a>
+
+## 边框
+
+	默认值：看每个独立属性
+
+	适用于：所有元素
+	
+	继承性：无
+	
+	动画性：看每个独立属性
+	
+	计算值：看每个独立属性
+	
+	相关属性：[ border-top ] || [ border-right ] || [ border-bottom ] || [ border-left ]
+	
+	取值：
+	<line-width>：
+	设置或检索对象边框宽度。
+	<line-style>：
+	设置或检索对象边框样式。
+	<color>：
+	设置或检索对象边框颜色。
 
