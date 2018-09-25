@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p::before {
+				content: "beforeq";
+				display: block;
+				/*嵌套一层标签*/
+				color: red;
+			}
+			
+			.p2::first-letter {
+				font-size: 30px;
+			}
+			
+			input::-webkit-input-placeholder {
+				color: red;
+			}
+			
+			input::-moz-placeholder {
+				/* Mozilla Firefox 19+ */
+				color: red;
+			}
+			
+			input:-moz-placeholder {
+				/* Mozilla Firefox 4 to 18 */
+				color: red;
+			}
+			
+			input:-ms-input-placeholder {
+				/* Internet Explorer 10-11 */
+				color: red;
+			}
+			
+			.p2::selection {
+				color: blue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--
+			E::before
+				在p标签内容添加信息
+			内容之前添加一个微元素
+			必须设置content调用出来，即使值为空也要写
+			为元素为行内元素
+			
+			E::first-letter: 设置对象内的第一个字符的样式。
+ 			E:first-line/E::first-line : 设置对象内的第一行的样式。 
+			E::selection: 设置对象被选择时的颜色。 
+			E::placeholder  : 设置对象文字占位符的样式。兼容性不好，同时设置会覆盖
+		-->
+	</body>
+	<!--<p>
+		p标签
+	</p>-->
+	<span class="p2">
+		pp今天天气很好
+	</span>
+	<input type="text" name="" id="" value="" placeholder="今天天气很好" />
+
+</html>

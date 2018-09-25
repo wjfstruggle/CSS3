@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*设置超链接a在未被访问前的样式。*/
+			a:link {
+				color: #D30408;
+			}
+			/*设置超链接a在其链接地址已被访问过时的样式。*/
+			a:visited {
+				color: blue;
+			}
+			/*设置元素在其鼠标悬停时的样式。*/
+			a:hover {
+				font-weight: bold;
+			}
+			/*设置元素在被用户激活(在鼠标点击与释放之间发生的事件)时的样式。*/
+			a:active {
+				text-decoration: none;
+			}
+			/*设置元素在成为输入焦点(该元素的onfocus事件发生)时的样式。*/
+			input:focus {
+				outline: none;
+			}
+			/*勾选CheckBox选中状态*/
+			input:checked + label {
+				color: red;
+			}
+			/*匹配父元素的第一个子元素E。*/
+			ul li:first-child {
+				color: blue;
+			}
+			/*匹配父元素的最后一个子元素E。*/
+			ul li:last-child {
+				color: blue;
+			}
+			/*匹配父元素的第n个子元素E。*/
+			ul li:nth-child(2n) {
+				background: red;
+			}
+			/*匹配不含有s选择符的元素E,除了第二个选择器以外，其余字体大小为20px*/
+			ul li:not(:nth-child(2)) {
+				font-size: 20px;
+			}
+			/*第n个儿子和同类型的才能匹配*/
+			ul li:nth-child(2) {
+				text-decoration: underline;
+			}
+			ol li:first-of-type {
+				font-weight: bold;
+			}
+			ol li:nth-of-type(2n) {
+				letter-spacing: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="#">点我，有惊喜</a>
+		<input type="text" name="" id="" value="" />
+		<!--勾选CheckBox，让label也切换样式-->
+		<input type="checkbox" checked="checked" id="check"/>
+		<label for="check">选中		
+		</label>
+		<ul>
+			<li>伪类选择器1</li>
+			<span>伪类选择器2</span>
+			<li>伪类选择器3</li>
+			<li>伪类选择器4</li>
+			<li>伪类选择器5</li>
+		</ul>
+		<ol>
+			<li>匹配同类型中的选择器1</li>
+			<span>匹配同类型中的选择器2</span>
+			<li>匹配同类型中的选择器3</li>
+			<li>匹配同类型中的选择器4</li>
+			<li>匹配同类型中的选择器5</li>
+			<li>匹配同类型中的选择器6</li>
+			<li>匹配同类型中的选择器7</li>
+		</ol>
+	</body>
+</html>

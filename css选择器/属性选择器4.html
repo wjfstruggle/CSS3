@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>属性选择器</title>
+		<style type="text/css">
+			input[type="button"] {
+				font-size: 30px;
+			}
+			
+			input[type] {
+				border: 1px solid #C40D0E;
+			}
+			/*选择具有att属性且属性值为以val开头的字符串的E元素。*/
+			
+			input[name^="p"] {
+				border-color: blue;
+			}
+			/*选择具有att属性且属性值为以val结尾的字符串的E元素。*/
+			
+			input[name$="s"] {
+				border-color: green;
+			}
+			
+			input[value*="hello"] {
+				border-color: green;
+			}
+			/*选择具有att属性且属性值为以val开头并用连接符"-"分隔的字符串的E元素。 */
+			
+			input[data-type|="dd"] {
+				border-color: pink;
+			}
+			
+			p[class] {
+				color: red;
+			}
+			/*选择具有att属性且属性值为一用空格分隔的字词列表，其中一个等于val的E元素。*/
+			
+			p[class~="abc"] {
+				font-size: 30px;
+			}
+			
+			p[class="qq"] {
+				text-decoration: underline;
+			}
+			
+			p[class^="aa"] {
+				text-shadow: #0000FF 2px 2px;
+			}
+			/*选择具有att属性且属性值为以val开头并用连接符"-"分隔的字符串的E元素。 */
+			
+			p[class|="test"] {
+				font-weight: bold;
+			}
+			
+			p[class$="world"] {
+				letter-spacing: 5px;
+			}
+			
+			p[class*="y"] {
+				background: green;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--<input type="button" id="" value="btn" />
+		<input type="submit" id="" name="" />
+		<input type="radio" name="" id="" value="radio" /><label for=""></label>
+		<input type="password" name="pass" value="hello" />
+		<input type="text" name="pserachs" value="hello" data-type="dd-a">
+		<input type="text" name="pserachs" value="hello" data-type="dd-a">
+		<input type="text" name="pserachs" value="hello" data-type="dd">-->
+
+		<p class="a">测试数据1</p>
+		<p class="qq">测试数据2</p>
+		<p class="xyz abc">测试数据3</p>
+		<p class="aa123">测试数据4</p>
+		<p class="test-abc">测试数据5</p>
+		<p class="hello-z-world">测试数据6</p>
+		<p class="y-1">测试数据7</p>
+		<p class="y-2">测试数据7</p>
+
+	</body>
+
+</html>
