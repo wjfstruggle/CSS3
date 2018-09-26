@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			div {
+				width: 400px;
+				height: 400px;
+				border: 1px dashed #000;
+				background-color: skyblue;
+				background-image: url(dashuju.png);
+				background-repeat: space;
+				background-repeat: round;
+				background-repeat: no-repeat;
+				/*
+				 背景图位置
+				 默认先x后y
+				 可以先写方位
+				 再写具体尺寸 left 10px bottom
+				 * */
+				background-position: 10px 10px;
+				background-position: left 10px bottom;
+				/*水平居中*/
+				background-position: center;
+				/*按照宽高比，直接覆盖整个容器，不留空白*/
+				background-size: cover;
+				/*按照宽高比，取容器最短边背景图的尺寸*/
+				background-size: contain;
+				background-size: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			
+		</div>
+	</body>
+</html>
