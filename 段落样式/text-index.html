@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				font-size: 12px;
+				margin: 20px;
+			}
+			
+			.p1 {
+				/*em相对于父元素字体大小而改变*/
+				width: 300px;
+				font-size: 16px;
+				text-indent: 2em;
+				/*两端对齐，仅限于多行时*/
+				text-align: justify;
+				/*文字溢出*/
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				/*text-shadow: 4px 4px 4px #D30408,
+				4px 4px 4px #0000FF;*/
+				
+			}
+			/*多行溢出*/
+			
+			.p2 {
+				overflow: hidden;
+				/*条件1：超出部分隐藏*/
+				text-overflow: ellipsis;
+				/*条件2：超出部分显示。。。*/
+				display: -webkit-box;
+				/*条件3：设置为伸缩盒*/
+				-webkit-line-clamp: 2;
+				/*这是要显示的行数*/
+				-webkit-box-orient: vertical;
+				/*设置排版方向为从上到下*/
+				width: 300px;
+			}
+			.box {
+				width: 100px;
+				height: 100px;
+				background: red;
+				box-shadow: 0 0 10px #017FCB;
+			}
+			/*画一朵云*/
+			.box1 {
+				margin: 60px;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background-color: #ccc;
+				box-shadow: -11px -18px 0 #ccc,
+				20px -2px 0 #ccc,
+				17px -20px 0 #c52d2d;
+				
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--
+			1、段落缩进： text-indent
+			2、段落对齐： text-align : left | right | center | justify 
+			3、文字溢出
+			
+				- 单行溢出： 
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+		-->
+		<p class="p1">
+			北京时间25日凌晨，国际足联年度颁奖典礼在英国伦敦举行。在最后的压轴大戏中，莫德里奇击败C罗和萨拉赫，荣膺本年度世界足球先生！这是克罗地亚人首次获得世界足球先生称号。此外，莫德里奇的当选也打破了梅罗对此奖项长达10年的统治。
+		</p>
+		<p class="p2">
+			正所谓“所有的成功都不是偶然的”，真的需要千锤百炼的磨砺。资质平庸的人想获得巨大的成功，则更需要通过严酷的环境去磨砺，让我们平庸的身体能够得到蜕变。而这样的蜕变也让大器晚成的莫德里奇率领着克罗地亚国家队以黑马的姿态一举杀到了世界杯决赛的赛场，也最终让这位克罗地亚球星在33岁这样的年纪拿到了FIFA世界足球先生这样的殊荣。在此，搜狐体育也为您带来了关于莫德里奇的成长之路，我们一起来看看这位球星是如何从战争的炮火中一步步走来的。
+		</p>
+		<div class="box">
+			
+		</div>
+		<div class="box1">
+			
+		</div>
+	</body>
+
+</html>
