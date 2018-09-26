@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.box {
+				/*浮动的元素不占据空间*/
+				/*父元素无法用内容来撑开，先可以看到，边框并没有包裹浮动的内容
+				 实际大小就是2像素边框，所以要清除浮动
+				 * */
+				border: 1px solid #ADFF2F;
+			}
+			/*在一个父级元素添加一个块级元素*/
+			.clear {
+				clear: both;
+			}
+			.clearfix::after {
+				display: block;
+				content: '';
+				clear: both;
+				height: 0;
+				line-height: 0;
+				visibility: hidden;
+			}
+			.clearfix {
+				zoom: 1;
+			}
+			.fl {
+				float: left;
+			}
+			.fr {
+				float: right;
+			}
+			.son1 {
+				color: red;
+				width:200px;
+			}
+			.box p {
+				background-color: skyblue;
+			}
+			.boxs {
+				/*width: 350px;*/
+				text-align: center;
+			}
+			.box2 {
+				width: 100px;
+				height: 100px;
+				line-height: 100px;
+				border: 1px solid #CCCCCC;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			取值：所有元素
+			none：设置对象不浮动
+			
+			left：设置对象浮在左边
+			
+			right：设置对象浮在右边
+			
+			特点：
+				1、浮动的元素不占据空间，但是文字会环绕浮动的元素
+				2、浮动的元素宽高默认由内容撑开，也可以设置宽高,也可以设置margin值
+				3、清除浮动
+					- 在一个父级元素添加一个块级元素
+					
+					- 伪类::after作为最后一个儿子清除浮动
+							.clearfix::after {
+								display: block;
+								content: '';
+								clear: both;
+							}
+							
+				4、当父元素的宽度不足以放下子元素时，子元素就会自动往下一行布局
+				
+				5、不管是左浮动还是右浮动，宽度不足的时候，先掉下去的是最后一个儿子
+		-->
+		<div class="box clearfix">
+			<div class="son1 fl ">
+				设置浮动元素
+			</div>
+			<!--<div class=""></div>-->
+			<!--<p>
+				<img src="dashuju.png"/>
+				该属性的值指出了对象是否及如何浮动。请参阅clear属性如果float不是none，当display:inline-table时，display的计算值为table；当disp
+				该属性的值指出了对象是否及如何浮动。请参阅clear属性如果float不是none，当display:inline-table时，display的计算值为table；当disp
+				该属性的值指出了对象是否及如何浮动。请参阅clear属性如果float不是none，当display:inline-table时，display的计算值为table；当disp
+			</p>-->
+		</div>
+		<div class="boxs">
+			<div class="box2 fl">1</div>
+			<div class="box2 fl">2</div>
+			<div class="box2 fr">3</div>
+			<div class="box2 fl">4</div>
+			<div class="box2 fr">5</div>
+		</div>
+	</body>
+</html>
