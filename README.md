@@ -9,6 +9,9 @@
 	- [文本](#文本)
 	- [边框](#边框)
 	- [字体样式](#字体样式)
+	- [段落样式](#段落样式)
+	- [背景](#背景)
+	- [浮动](#浮动)
 
 
 * HTML5笔记
@@ -484,9 +487,9 @@ video
 - [x] 群组选择符
 - [x] 关系选择符
 - [x] id 及 class 选择符
-- [x] 伪类选择符（部分扩展学习）
-- [x] 属性选择符（扩展学习）
-- [x] 伪对象选择符（扩展学习）
+- [x] 伪类选择符
+- [x] 属性选择符
+- [x] 伪对象选择符
 
 ------------------------------------------------
 - [x] 通配选择符
@@ -891,6 +894,33 @@ video
 | E::placeholder    | css3 |   设置对象文字占位符的样式。   |
 | E::selection    | css3 |   设置对象被选中时的样式
 
+**注意细节**
+		
+E::before
+
+- 在p标签内容添加信息
+- 内容之前添加一个伪元素
+- 必须设置content调用出来，即使值为空也要写
+- 为元素为行内元素
+	
+E::first-letter: 设置对象内的第一个字符的样式。
+
+- 此伪对象仅作用于块对象。内联对象要使用该伪对象，必须先将其设置为块级对象。该伪类常被用来配合font-size属性和float属性制作首字下沉效果。	
+	
+E:first-line/E::first-line : 设置对象内的第一行的样式。
+
+- 此伪对象仅作用于块对象。内联对象要使用该伪对象，必须先将其设置为块级对象。
+	
+E::selection: 设置对象被选择时的颜色。 
+
+- 需要注意的是，::selection只能定义被选择时的background-color，color及text-shadow(IE11尚不支持定义该属性)。
+	
+E::placeholder  : 设置对象文字占位符的样式。兼容性不好，同时设置会覆盖
+
+- ::placeholder 伪元素用于控制表单输入框占位符的外观，它允许开发者/设计师改变文字占位符的样式，默认的文字占位符为浅灰色。
+	
+		当表单背景色为类似的颜色时它可能效果并不是很明显，那么就可以使用这个伪元素来改变文字占位符的颜色。
+	
 事列：    
 ```
 <style type="text/css">
@@ -1323,3 +1353,289 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 		<i class="iconfont icon-shouye">首页</i>
 		<i class="iconfont icon-ai66">购物车</i>
 		<i class=" iconfont icon-play"></i>
+
+**[返回目录](#zore)**
+
+[move的布局dome](https://struggle-wjf.gitee.io/move_layout/)
+
+<a name="段落样式"></a>
+
+### 段落样式
+
+1、段落缩进： text-indent 适用于：块容器
+	
+- 取值：
+
+		<length>：用长度值指定文本的缩进。可以为负值。
+		
+		<percentage>：用百分比指定文本的缩进。可以为负值。
+		
+		
+		each-line：定义缩进作用在块容器的第一行或者内部的每个强制换行的首行，软换行不受影响。（CSS3）
+		
+		hanging：反向所有被缩进作用的行。（CSS3）
+
+2、段落对齐： text-align : left | right | center | justify 
+	
+- 取值：快容器
+
+	left：内容左对齐。
+	
+	center：内容居中对齐。
+	
+	right：内容右对齐。
+	
+	justify：两端对齐，仅限于多行时，但对于强制打断的行（被打断的这一行）及最后一行（包括仅有一行文本的情况，因为它既是第一行也是最后一行）不做处理。（CSS3）
+	
+	start：内容对齐开始边界。（CSS3）
+	
+	end：内容对齐结束边界。（CSS3）
+	
+3、文字溢出
+		
+		/*文字在一行内的省略号*/
+		.textOverflow1 {
+			text-overflow: ellipsis; /*超出部分显示...*/
+			overflow: hidden; /*超出部分隐藏*/
+			white-space: nowrap;/*不换行*/
+		}
+
+		/*文字在二行内的省略号*/
+		.textOverflow2 {
+			text-overflow: ellipsis; /*超出部分显示...*/
+			overflow: hidden; /*超出部分隐藏*/
+			display: -webkit-box; /*设置为伸缩盒子*/
+			-webkit-line-clamp: 2;/*这是要显示的行数*/
+			-webkit-box-orient: vertical;/*设置排版方向为从上到下*/
+		}
+
+		/*文字在三行内的省略号*/
+		.textOverflow2 {
+			text-overflow: ellipsis; /*超出部分显示...*/
+			overflow: hidden; /*超出部分隐藏*/
+			display: -webkit-box; /*设置为伸缩盒子*/
+			-webkit-line-clamp: 3;/*这是要显示的行数*/
+			-webkit-box-orient: vertical;/*设置排版方向为从上到下*/
+		}
+
+4、 text-shadow
+
+取值：
+
+	none：无阴影
+	
+	<length>①：第1个长度值用来设置对象的阴影水平偏移值。可以为负值
+	
+	<length>②：第2个长度值用来设置对象的阴影垂直偏移值。可以为负值
+	
+	<length>③：如果提供了第3个长度值则用来设置对象的阴影模糊值。不允许负值
+	
+	<color>：设置对象的阴影的颜色。
+	
+		<style>
+			.test li{margin-top:10px;}
+			.test .mormal p{text-shadow:1px 1px rgba(0,0,0,.3);}
+			.test .blur p{text-shadow:1px 1px 1px rgba(0,0,0,.3);}
+			.test .group p{text-shadow:1px 1px 0 rgba(255,255,255,1),1px 1px 2px rgba(0,85,0,.8);}
+		</style>
+		</head>
+			<body>
+			<ul class="test">
+				<li class="mormal">
+					<strong>普通文字阴影</strong>
+					<p>测试普通文字阴影效果</p>
+				</li>
+				<li class="blur">
+					<strong>模糊文字阴影效果</strong>
+					<p>测试模糊文字阴影效果</p>
+				</li>
+				<li class="group">
+					<strong>多重模糊文字阴影效果</strong>
+					<p>测试多重模糊文字阴影效果</p>
+				</li>
+			</ul>
+		</body>
+
+5、box-shadow和text-shadow用法相似
+
+[实战中布局演示](https://struggle-wjf.gitee.io/new_word_static_web_page/)
+
+**[返回目录](#zore)**
+
+<a name="背景"></a>
+
+### 背景
+
+- background-image: 指定对象的背景图像。可以是真实图片路径或使用渐变创建的“背景图像
+
+	`background-image:url(test1.jpg),url(test2.jpg),url(test3.jpg);`
+
+可以写多个背景图片:
+
+> 如果设置了 <' background-image '>，同时也建议设置 <' background-color '> 用于当背景图像不可见时保持与文本颜色有一定的对比度。
+如果定义了多组背景图，且背景图之间有重叠，写在前面的将会盖在写在后面的图像之上。
+
+- background-repeat： 指定对象的背景图像如何铺排填充。
+
+	- repeat-x：背景图像在横向上平铺
+
+	- repeat-y：背景图像在纵向上平铺
+	
+	- repeat：背景图像在横向和纵向平铺
+	
+	- no-repeat：背景图像不平铺
+	
+	- round：背景图像自动缩放直到适应且填充满整个容器。（CSS3）
+
+	- space：背景图像以相同的间距平铺且填充满整个容器或某个方向。（CSS3）
+
+- background-size： 指定对象的背景图像的尺寸大小。
+取值：
+
+		<length>：用长度值指定背景图像大小。不允许负值。
+		
+		<percentage>：用百分比指定背景图像大小。不允许负值。
+		
+		auto：背景图像的真实大小。
+		
+		cover：将背景图像等比缩放到完全覆盖容器，背景图像有可能超出容器。
+		
+		contain：将背景图像等比缩放到宽度或高度与容器的宽度或高度相等，背景图像始终被包含在容器内。
+	
+- background-position： 指定对象的背景图像位置。
+
+取值：
+>背景图位置 ，默认先x后y，可以先写方位，再写具体尺寸 left 10px bottom
+		<percentage>：用百分比指定背景图像填充的位置。可以为负值。
+		
+		<length>：用长度值指定背景图像填充的位置。可以为负值。
+		
+		center：背景图像横向和纵向居中。
+		
+		left：背景图像在横向上填充从左边开始。
+		
+		right：背景图像在横向上填充从右边开始。
+		
+		top：背景图像在纵向上填充从顶部开始。
+		
+		bottom：背景图像在纵向上填充从底部开始。
+
+- background-color：指定对象的背景颜色。
+- background-origin 指定对象的背景图像显示的原点。
+
+取值：
+
+		padding-box：从padding区域（含padding）开始显示背景图像。
+		
+		border-box：从border区域（含border）开始显示背景图像。
+		
+		content-box：从content区域开始显示背景图像。
+
+- background-clip 指定对象的背景图像向外裁剪的区域。
+
+取值：
+
+		padding-box：从padding区域（不含padding）开始向外裁剪背景。
+		border-box：从border区域（不含border）开始向外裁剪背景。
+		content-box：从content区域开始向外裁剪背景。
+		text：从前景内容的形状（比如文字）作为裁剪区域向外裁剪，如此即可实现使用背景作为填充色之类的遮罩效果。遮罩效果 
+
+<a name="浮动"></a>
+
+### 浮动
+
+取值：所有元素
+
+	none：设置对象不浮动
+	
+	left：设置对象浮在左边
+	
+	right：设置对象浮在右边
+
+> 浮动的目的：
+	就是要打破文档流的默认显示规则。如果要让元素按照我们的布局要求进行显示。这时就
+	要利用float属性。
+
+- 说明：
+
+	1.任何申明为 float 的元素自动被设置为一个“块级元素”。 
+	
+	2.在标准浏览器中 浮动元素脱离了文档流 ，所以浮动元素后的元素会占据浮动元素本来应该所处的位置。
+	
+	3.如果水平方向上没有足够的空间容纳浮动元素，则转向下一行 。
+	
+	4.文字内容会围绕在浮动元素周围 。
+	
+	5.浮动元素只能浮动至左侧或者右侧 。
+
+	
+特点：
+
+	1、浮动的元素不占据空间，但是文字会环绕浮动的元素
+	
+	2、浮动的元素宽高默认由内容撑开，也可以设置宽高,也可以设置margin值
+	
+	3、清除浮动
+	
+	- 在一个父级元素添加一个块级元素
+	
+	- 伪类::after作为最后一个儿子清除浮动
+			.clearfix::after {
+				display: block;
+				content: '';
+				clear: both;
+				height: 0;
+				line-height: 0;
+				visibility: hidden;
+			}
+			
+	4、当父元素的宽度不足以放下子元素时，子元素就会自动往下一行布局
+	
+	5、不管是左浮动还是右浮动，宽度不足的时候，先掉下去的是最后一个儿子
+
+清除浮动的三种方式：
+	
+1、在浮动元素后面紧跟一个空div,并给该div设置clear:both(全浏览器兼容)
+
+2、给父元素添加overflow:auto即可(除了ie6要用zoom:1,其余都支持)
+
+3、使用after伪对象清除浮动(支持IE8以上浏览器,但IE8只支持单冒号写法`:after`)
+
+		.clearfix::after{
+			display:block;
+			clear:both;
+			content:'';
+			visibility:hidden;
+			height:0;
+			line-height:0;
+		}
+		.clearfix {
+			zoom: 1; /*兼容ie*/
+		}
+
+**为什么要清除浮动**
+
+浮动的元素不占据空间，父元素无法用内容来撑开
+
+		<div class="box clearfix">
+			<div class="son1 fl ">
+				设置浮动元素
+			</div>
+			<!--<div class=""></div>-->
+			<!--<p>
+				<img src="dashuju.png"/>
+				该属性的值指出了对象是否及如何浮动。请参阅clear属性如果float不是none，当display:inline-table时，display的计算值为table；当disp
+				该属性的值指出了对象是否及如何浮动。请参阅clear属性如果float不是none，当display:inline-table时，display的计算值为table；当disp
+				该属性的值指出了对象是否及如何浮动。请参阅clear属性如果float不是none，当display:inline-table时，display的计算值为table；当disp
+			</p>-->
+		</div>
+		
+		.box {
+				/*浮动的元素不占据空间*/
+				/*父元素无法用内容来撑开，先可以看到，边框并没有包裹浮动的内容
+				 实际大小就是2像素边框，所以要清除浮动
+				 * */
+				border: 1px solid #ADFF2F;
+			}
+			
+**[返回目录](#zore)**
