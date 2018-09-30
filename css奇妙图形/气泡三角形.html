@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../public/public.css" />
+		<style type="text/css">
+			.trangle {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 260px;
+				padding: 60px 20px;
+				background: #00aabb;
+				text-align: center;
+				border-radius: 10px;
+			}
+			
+			.trangle h1 {
+				color: #FFFFFF;
+				font-size: 20px;
+			}
+			/*左边*/
+			.trangle::after {
+				content: '';
+			    position: absolute;
+			    left: 0;
+			    border-top: 30px solid transparent;
+				border-right: 60px solid #00aabb;
+			    margin-left: -50px;
+			}
+			/*底部*/
+			.trangle::after {
+				content: '';
+			    position: absolute;
+			    bottom: -54px;
+				border-top: 74px solid #00aabb;
+				border-right: 50px solid transparent;
+			    margin-left: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="trangle">
+			<h1>heart Shaped</h1>
+		</div>
+	</body>
+
+</html>

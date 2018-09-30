@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../public/public.css"/>
+		<style type="text/css">
+			.LovePic {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%) rotate(45deg);
+				width: 340px;
+				line-height: 340px;
+				background: rgba(255, 20, 147, .85);
+				color: #FFFFFF;
+				text-align: center;				
+			}
+			.LovePic h1 {
+				font-size: 40px;
+				position: relative;
+				z-index: 10;
+				transform:rotate(-45deg);
+			}
+			.LovePic::before, .LovePic::after {
+				position: absolute;
+				content: '';
+				top: 0;
+				left: -170px;
+				width: 340px;
+				height: 340px;
+				background: rgb(255, 20, 147);
+				border-radius: 50%;
+			}
+			.LovePic::before {				
+				left: 0;
+				top: -170px;	
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			原理：利用 圆形 和 正方形实现
+		-->
+		<div class="LovePic">
+			<h1>heart Shaped</h1>
+		</div>
+	</body>
+</html>
