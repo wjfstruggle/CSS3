@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				position: absolute;				
+			}
+			.box1 {
+				top: 80px;
+				left: 30px;
+				width: 100px;
+				height: 100px;
+				background-color: #000;
+			}
+			.box2 {
+				top: 34px;
+				left: 80px;
+				width: 200px;
+				height: 140px;
+				background-color: skyblue;
+				z-index: -1;
+			}
+			.box3 {
+				top: 100px;
+				left: 100px;
+				width: 150px;
+				height: 130px;
+				background-color: green;
+			}
+			.box4 {
+				position: relative;
+				top: 75px;
+				left: 160px;
+				width: 300px;
+				height: 130px;
+				background-color: red;
+			}
+			.box5 {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				width: 50px;
+				height: 50px;
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4">
+			<div class="box5"></div>
+		</div>
+		
+	</body>
+</html>

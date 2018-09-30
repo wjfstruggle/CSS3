@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.boxR {
+				position: relative;
+				margin:100px;
+				width: 200px;
+				height: 200px;
+				background-color: greenyellow;
+			}
+			.box {
+				position: absolute;
+				top: 10px;
+				left: 20px;
+				/*bottom: 100px;
+				right: 200px;*/
+				width: 100px;
+				height: 100px;
+				background-color: skyblue;
+
+			}
+			
+			p {
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--
+			定位：
+			1、当元素没有设置宽高时，top和bottom，left，right**同时设置**可以拉伸元素尺寸
+			2、定位完全脱离文档流（相对定位是不设置这些方位值的时候会占据空间）
+			3、绝对定位默认body为定位元素，如果父元素有position: relative;就参考这个元素，以此类推，直到body。
+			4、固定定位 position: fixed;相对于窗口定位
+			5、z-index：是可以设置定位元素的层级，数值越大越靠上，数值一致时，后来只居上
+		-->
+		<div class="boxR">
+			<div class="box">
+
+			</div>
+		</div>
+		<p>
+			对象脱离常规流，此时偏移属性参照的是离自身最近的定位祖先元素
+		</p>
+		<div class="boxS">
+			<div class="boxS1">111</div>
+			<div class="boxS2">111</div>
+		</div>
+	</body>
+
+</html>
