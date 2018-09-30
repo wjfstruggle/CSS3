@@ -13,6 +13,8 @@
 	- [段落样式](#段落样式)
 	- [背景](#背景)
 	- [浮动](#浮动)
+	- [过渡](#过渡)
+	- [变形](#变形)
 
 
 * HTML5笔记
@@ -1105,6 +1107,18 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 
 ### 元素的定位
 
+定位：
+
+1、当元素没有设置宽高时，top和bottom，left，right **同时设置** 可以拉伸元素尺寸
+
+2、定位完全脱离文档流（相对定位是不设置这些方位值的时候会占据空间）
+
+3、绝对定位默认body为定位元素，如果父元素有position: relative;就参考这个元素，以此类推，直到body。
+
+4、固定定位 position: fixed;相对于窗口定位
+
+5、z-index：是可以设置定位元素的层级，数值越大越靠上，数值一致时，后来只居上
+
 语法：position： **static** | **absolute** | **relative** | **fixed**
 > static: 无定位，默认值
 
@@ -1133,6 +1147,84 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
   - 不同层叠上下文中，元素的显示顺序依据祖先的层叠级别来决定，与自身的层叠级别无关。
   - 当z-index未定义或者值为auto时，在IE6,7下会创建新的局部层叠上下文，而在高级浏览器中，按照规范不产生新的局部层叠上下文
   
+实现一个简单的层级效果
+
+		<style type="text/css">
+			div {
+				position: absolute;				
+			}
+			.box1 {
+				top: 80px;
+				left: 30px;
+				width: 100px;
+				height: 100px;
+				background-color: #000;
+			}
+			.box2 {
+				top: 34px;
+				left: 80px;
+				width: 200px;
+				height: 140px;
+				background-color: skyblue;
+				z-index: -1;
+			}
+			.box3 {
+				top: 100px;
+				left: 100px;
+				width: 150px;
+				height: 130px;
+				background-color: green;
+			}
+			.box4 {
+				position: relative;
+				top: 75px;
+				left: 160px;
+				width: 300px;
+				height: 130px;
+				background-color: red;
+			}
+			.box5 {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				width: 50px;
+				height: 50px;
+				background-color: yellow;
+			}
+		</style>
+			<div class="box1"></div>
+			<div class="box2"></div>
+			<div class="box3"></div>
+			<div class="box4">
+				<div class="box5"></div>
+			</div>
+
+- 用定位来实现元素的水平垂直居中：
+	
+		<style type="text/css">
+			.boxS {
+				width: 300px;
+				height: 300px;
+				background-color: red;
+				position: relative;
+			}
+			.boxS1 {
+				width: 150px;
+				height: 150px;
+				background-color: skyblue;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -75px;
+				margin-top: -75px;
+			}
+		</style>
+			垂直居中时，元素的top和left为50%，同时margin-left和margin-top设置为元素高宽的一般切位负值
+			缺点：要清楚元素的宽高
+		<div class="boxS">
+			<div class="boxS1">111</div>
+		</div>
+		
 **[返回目录](#zore)**
 
 <a name="边框"></a>
@@ -1641,3 +1733,453 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 			}
 			
 **[返回目录](#zore)**
+
+<a name="过渡"><a/>
+
+### 过渡transition
+				
+Internet Explorer 10、Firefox、Chrome 以及 Opera 支持 transition 属性。
+
+Safari 需要前缀 -webkit-。
+
+注释：Internet Explorer 9 以及更早的版本，不支持 transition 属性。
+
+注释：Chrome 25 以及更早的版本，需要前缀 -webkit-。
+
+要实现这一点，必须规定两项内容：
+
+规定您希望把效果添加到哪个 CSS 属性上
+
+规定效果的时长
+
+转换属性：
+
+属性	描述	CSS
+
+- transition	简写属性，用于在一个属性中设置四个过渡属性。	
+
+- transition-property	规定应用过渡的 CSS 属性的名称。	
+
+- transition-duration	定义过渡效果花费的时间。默认是 0。	
+
+- transition-timing-function	规定过渡效果的时间曲线。默认是 "ease"。
+	
+		linear：匀速
+		ease-in：加速
+		ease-out：减速
+		ease-in-out：先加速后减速
+				
+- transition-delay	规定过渡效果何时开始。默认是 0。
+
+- 也可以结合起来写： transition：属性 时间 动画 延迟
+
+列如：
+
+		div {
+				width: 130px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				background: skyblue;color: #fff;	
+				border: 1px solid skyblue;	
+				cursor: pointer;
+				transition: background 500ms;
+				transition: background 500ms,color 2s;
+				/*all 所以属性都引用过渡*/
+				transition: all 2s;
+				/*运动的速度,linear匀速*/
+				transition: all 2s linear  color,2s;
+				/*width变为33px*/
+				transition: width 2s linear  color,2s;
+			}
+			div:hover {
+				width: 330px;
+				background: #fff ;
+				color:skyblue;	
+			}
+		
+		<div class="link">css教程</div>
+		<div class="link">css教程</div>
+		<div class="link">css教程</div>
+		<div class="link">css教程</div>
+
+<a name="变形"><a/>
+
+### 变形transform
+
+CSS3 转换
+
+	通过 CSS3 转换，我们能够对元素进行移动、缩放、转动、拉长或拉伸
+	Internet Explorer 10、Firefox 以及 Opera 支持 transform 属性。
+
+	Chrome 和 Safari 需要前缀 -webkit-。
+
+	注释：Internet Explorer 9 需要前缀 -ms-。
+
+2D 转换
+在本章中，您将学到如下 2D 转换方法：
+
+		matrix()：以一个含六值的(a,b,c,d,e,f)变换矩阵的形式指定一个2D变换，相当于直接应用一个[a,b,c,d,e,f]变换矩阵
+		translate()：指定对象的2D translation（2D平移）。第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则默认值为0
+		translatex()：指定对象X轴（水平方向）的平移
+		translatey()：指定对象Y轴（垂直方向）的平移
+		rotate()：指定对象的2D rotation（2D旋转），需先有 <' transform-origin '> 属性的定义
+		scale()：指定对象的2D scale（2D缩放）。第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则默认取第一个参数的值
+		scalex()：指定对象X轴的（水平方向）缩放
+		scaley()：指定对象Y轴的（垂直方向）缩放
+		skew()：指定对象skew transformation（斜切扭曲）。第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则默认值为0
+		skewx()：指定对象X轴的（水平方向）扭曲
+		skewy()：指定对象Y轴的（垂直方向）扭曲
+		
+		div {
+			display: inline-block;
+			width: 100px;
+			height: 100px;
+			background: red;
+			transform: translate(50px, 100px);
+			/*-ms-transform: translate(50px, 100px);*/
+		}
+		div
+			{
+			/* rotate(30deg) 把元素顺时针旋转 30 度。*/
+			transform: rotate(30deg);
+			-ms-transform: rotate(30deg);		/* IE 9 */
+			-webkit-transform: rotate(30deg);	/* Safari and Chrome */
+			-o-transform: rotate(30deg);		/* Opera */
+			-moz-transform: rotate(30deg);		/* Firefox */
+			}
+			div
+				{
+					/* scale(2,4) 把宽度转换为原始尺寸的 2 倍，把高度转换为原始高度的 4 倍。*/
+				transform: scale(2,4);
+				-ms-transform: scale(2,4);	/* IE 9 */
+				-webkit-transform: scale(2,4);	/* Safari 和 Chrome */
+				-o-transform: scale(2,4);	/* Opera */
+				-moz-transform: scale(2,4);	/* Firefox */
+				}
+				div
+					{
+					transform: skew(30deg,20deg);
+					-ms-transform: skew(30deg,20deg);	/* IE 9 */
+					-webkit-transform: skew(30deg,20deg);	/* Safari and Chrome */
+					-o-transform: skew(30deg,20deg);	/* Opera */
+					-moz-transform: skew(30deg,20deg);	/* Firefox */
+					}
+					div
+						{
+						transform:matrix(0.866,0.5,-0.5,0.866,0,0);
+						-ms-transform:matrix(0.866,0.5,-0.5,0.866,0,0);		/* IE 9 */
+						-moz-transform:matrix(0.866,0.5,-0.5,0.866,0,0);	/* Firefox */
+						-webkit-transform:matrix(0.866,0.5,-0.5,0.866,0,0);	/* Safari and Chrome */
+						-o-transform:matrix(0.866,0.5,-0.5,0.866,0,0);		/* Opera */
+						}
+
+3D Transform Functions：
+
+		matrix3d()：以一个4x4矩阵的形式指定一个3D变换
+		translate3d()：指定对象的3D位移。第1个参数对应X轴，第2个参数对应Y轴，第3个参数对应Z轴，参数不允许省略
+		translatez()：指定对象Z轴的平移
+		rotate3d()：指定对象的3D旋转角度，其中前3个参数分别表示旋转的方向x,y,z，第4个参数表示旋转的角度，参数不允许省略
+		rotatex()：指定对象在x轴上的旋转角度
+		rotatey()：指定对象在y轴上的旋转角度
+		rotatez()：指定对象在z轴上的旋转角度
+		scale3d()：指定对象的3D缩放。第1个参数对应X轴，第2个参数对应Y轴，第3个参数对应Z轴，参数不允许省略
+		scalez()：指定对象的z轴缩放
+		perspective()：指定透视距离
+		
+		div {
+			margin: 0 auto;
+			width: 100px;
+			height: 100px;
+			background: red;
+			transform: rotateX(30deg);
+			-webkit-transform: rotateX(120deg);	/* Safari 和 Chrome */
+			-moz-transform: rotateX(120deg);	/* Firefox */
+		}
+		#div1 {
+			margin: 0 auto;
+			width: 100px;
+			height: 100px;
+			background: red;
+			transform: rotateY(120deg);
+			transform-origin: 30px 30px;
+			-webkit-transform: rotateY(120deg);	/* Safari 和 Chrome */
+			-moz-transform: rotateY(120deg);	/* Firefox */
+		}
+		
+**利用过渡和变形实现css奇妙图形**
+
+**心形图**
+
+![](https://images2018.cnblogs.com/blog/755438/201803/755438-20180329214731883-314703565.png)
+
+实现原理：利用伪类和旋转角度实现
+
+		<div class="LovePic">
+			<h1>heart Shaped</h1>
+		</div>
+		
+		.LovePic {
+				position: absolute;
+				/*水平垂直居中*/
+				top: 50%;
+				left: 50%;
+				/*旋转45度角*/
+				transform: translate(-50%, -50%) rotate(45deg);
+				width: 340px;
+				line-height: 340px;
+				background: rgba(255, 20, 147, .85);
+				color: #FFFFFF;
+				text-align: center;				
+			}
+			.LovePic h1 {
+				font-size: 40px;
+				position: relative;
+				z-index: 10;
+				transform:rotate(-45deg);
+			}
+			.LovePic::before, .LovePic::after {
+				position: absolute;
+				content: '';
+				top: 0;
+				left: -170px;
+				width: 340px;
+				height: 340px;
+				background: rgb(255, 20, 147);
+				border-radius: 50%;
+			}
+			.LovePic::before {				
+				left: 0;
+				top: -170px;	
+			}
+			
+**气泡三角形**
+
+![](https://images2018.cnblogs.com/blog/755438/201803/755438-20180329215026949-162086909.png)
+		
+		<div class="trangle">
+			<h1>heart Shaped</h1>
+		</div>
+		
+		.trangle {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 260px;
+				padding: 60px 20px;
+				background: #00aabb;
+				text-align: center;
+				border-radius: 10px;
+			}
+			
+			.trangle h1 {
+				color: #FFFFFF;
+				font-size: 20px;
+			}
+			/*左边*/
+			.trangle::after {
+				content: '';
+			    position: absolute;
+			    left: 0;
+			    border-top: 30px solid transparent;
+				border-right: 60px solid #00aabb;
+			    margin-left: -50px;
+			}
+			/*底部*/
+			.trangle::after {
+				content: '';
+			    position: absolute;
+			    bottom: -54px;
+				border-top: 74px solid #00aabb;
+				border-right: 50px solid transparent;
+			    margin-left: 50px;
+			}
+
+**右边菜单栏过渡效果**
+
+![](http://edu.bluej.cn/public/uploads/20180427/20180427154150Honeycam.gif)
+
+实现原理：利用transition和tranform实现
+
+		* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			a {
+				text-decoration: none;
+			}
+			.box {
+				position: absolute;
+				text-align: center;
+				right: -160px;
+				width: 400px;
+			}
+			.box li {
+				color: blue;
+				padding-left: 200px;
+				text-align: left;
+				font-size: 0;
+				margin-bottom: 4px;
+			}
+			.box li:nth-child(1) {
+				transition: transform .3s linear;
+			}
+			.box li:nth-child(2) {
+				transition: transform .3s linear .1s;
+			}
+			.box li:nth-child(3) {
+				transition: transform .3s linear .2s;
+			}
+			.box li:nth-child(4) {
+				transition: transform .3s linear .3s;
+			}
+			.box li:nth-child(5) {
+				transition: transform .3s linear .4s;
+			}
+			.box li:nth-child(6) {
+				transition: transform .3s linear .5s;
+			}
+			.box li:nth-child(7) {
+				transition: transform .3s linear .6s;
+			}
+			.box li:nth-child(8) {
+				transition: transform .3s linear .7s;
+			}
+			.box li:nth-child(9) {
+				transition: transform .3s linear .8s;
+			}
+			.box li:nth-child(10) {
+				transition: transform .3s linear .9s;
+			}
+			.box li:nth-child(11) {
+				transition: transform .3s linear 1s;
+			}
+			.box li span {
+				width: 20px;
+				height: 20px;
+				display: inline-block;
+				text-align: center;				
+				font-size: 18px;
+				color: #fff;
+				background: #0000FF;
+				padding: 10px;
+				cursor: pointer;
+				vertical-align: bottom;
+			}
+			.box:hover li{
+				transform: translateX(-160px);
+			}
+			.box li span:hover {
+				background: greenyellow;
+			}
+			.box li a {
+				display: inline-block;
+				font-size: 16px;
+				width: 150px;
+				padding-left: 10px;
+				vertical-align: bottom;
+				border-bottom: 1px solid #ccc;
+			}
+			.box li a:hover {			
+				background: skyblue;
+			}
+			
+			<div class="box">
+			<ul>
+				<li>
+					<span>1</span> <a href="">站长素材</a>
+				</li>
+				<li>
+					<span>2</span><a href="">书签切换</a> 
+				</li>
+				<li>
+					<span>3</span><a href="">幻灯片</a> 
+				</li>
+				<li>
+					<span>4</span> <a href="">图片滚动正</a>
+				</li>
+				<li>
+					<span>5</span><a href="">图片滚动上</a> 
+				</li>
+				<li>
+					<span>6</span><a href="">图片无线滚动</a> 
+				</li>
+				<li>
+					<span>7</span> <a href="">文字滚动</a>
+				</li>
+				<li>
+					<span>8</span> <a href="">文字无缝滚动</a>
+				</li>
+				<li>
+					<span>9</span><a href="">其他基础效果</a> 
+				</li>
+				<li>
+					<span>10</span> <a href="">transition实现</a>
+				</li>
+				<li>
+					<span>11</span><a href="">正则表达式</a> 
+				</li>
+			</ul>
+		</div>
+
+**筛子立体图效果**
+
+![](https://images2015.cnblogs.com/blog/967327/201610/967327-20161007183013192-1320367994.png)
+
+		.shaizai {
+				width: 100px;
+				height: 100px;
+				line-height: 100px;
+				margin: 100px;
+				text-align: center;
+				/*3d模式*/
+				transform-style: preserve-3d;
+				position: relative;
+				transition: all 10s;
+			}
+			.shaizai:hover {
+				transform: rotateX(360deg) rotateY(360deg);
+			}
+			.side {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: .5;
+			}
+			.front {
+				transform: translateZ(50px);
+				background: red;
+			}
+			.back {
+				transform: rotateY(180deg) translateZ(50px) ;
+				background: skyblue;
+			}
+			.left {
+				transform:rotateY(90deg) translateZ(50px) ;
+				background: green;
+			}
+			.right {
+				transform:rotateY(-90deg) translateZ(50px) ;
+				background: orange;
+			}
+			.top {
+				transform:rotateX(-90deg) translateZ(50px) ;
+				background: pink;
+			}
+			.bottom {
+				transform:rotateX(90deg) translateZ(50px) ;
+				background: #000;
+			}
+			
+		<div class="shaizai">
+			<div class="side top">1</div>
+			<div class="side bottom">2</div>
+			<div class="side left">3</div>
+			<div class="side right">4</div>
+			<div class="side front">5</div>
+			<div class="side back">6</div>
+		</div>
