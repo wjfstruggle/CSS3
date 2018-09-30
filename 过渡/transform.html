@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<!--<link rel="stylesheet" type="text/css" href="../public/public.css"/>-->
+		<style type="text/css">
+			.box {
+				width:100px;
+				height: 100px;
+				background: skyblue;
+				line-height: 100px;
+				text-align: center;
+				transition: all 2s;
+			}
+			.box:hover{
+				/*平移*/
+				transform: translate(20px, 50px);
+				/*缩放*/
+				transform: scale(2);
+				transform: scaleX(2);
+				transform: scaleY(2);
+				/*旋转 默认z轴旋转*/
+				transform: rotateX(90deg);
+				transform: rotateY(90deg);
+				transform: rotateZ(90deg);
+				/*斜切*/
+				transform: skewY(45deg);
+				
+				transform: rotate(30deg) translateZ(45px);
+				
+				/*中心点*/
+				/*transform-origin: left top;*/
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			变形的这些元素是不会改变形态的，只是UI的效果，不影响布局。
+			
+			重绘
+			
+			回流：只要一个元素尺寸发生变化，其他也会变化
+			
+			默认的中心点在交叉轴中点，
+			
+			其他很多关于图形的界面，svg在右上角
+		-->
+		<div class="box">box</div>
+		<h1 class="title">title</h1>
+	</body>
+</html>
