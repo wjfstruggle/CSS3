@@ -50,10 +50,11 @@ HTML标题
 - HTML
  标题（Heading）是通过 `<h1> - <h6>` 等标签进行定义的。
 >事列
-
+```html	
 		<h1>This is a heading</h1>
 		<h2>This is a heading</h2>
 		<h3>This is a heading</h3>
+```
 
 <a name="html段落"></a>		
 
@@ -70,17 +71,18 @@ p元素是块级元素，不能嵌套块级元素，列如p，div，table，ul
 <a name="文本格式化"></a>		
 
 ### 文本格式化
-
+```html	
         <b>定义粗体文本</b>
         <i> 定义斜体文本 </i>
         <del>定义删除文本</del>
         <sup>定义上标字</sup>
         <sub>定义下标字</sub>
- 
+``` 
 <a name="a标签"></a>    
    
 ### a标签
-		
+
+```html			
 			<!-- 
 	    <a href=“URL”> ~ </a>
 	    说明：
@@ -88,15 +90,15 @@ p元素是块级元素，不能嵌套块级元素，列如p，div，table，ul
 	    title       链接提示信息
 	    target      链接打开方式(_blank 新的空白页,_self  当前页,_top(结合iframe使用))
 	
-	     -->
-```     
+	    -->
+    
 <a href="" title="你好" target="_top">hello world</a>
 <a href="tel:电话号码" title="你好" target="_top">拨打号码</a>
 <a href="" title="你好" target="_top">hello world</a>
 <a href="" title="你好" target="_top">hello world</a>
 <a href="" title="你好" name="p元素.html">hello world</a>
 <a href="" target=""></a>
-```
+
 	    <!--baidu.com 一级域名
 	    	二级域名：http://news.baidu.com/
 	    -->
@@ -118,11 +120,12 @@ p元素是块级元素，不能嵌套块级元素，列如p，div，table，ul
 	
 	行内元素不会独占一行，相邻的行内元素会排列在同一行，若一行排不下，会自动换行。其宽度会随内容的变化而变化</p>
 	    <a href="#top">跳转到p段落顶部</a>
+```
 
 <a name="表格"></a> 
 
 ### 表格	    
-
+```html	
 		<!--
 			
 			border： 边框
@@ -198,7 +201,7 @@ p元素是块级元素，不能嵌套块级元素，列如p，div，table，ul
 				<td>Data</td>
 			</tr>
 		</table>
-
+```
 		
 <a name="表单"></a> 		
 
@@ -229,86 +232,93 @@ p元素是块级元素，不能嵌套块级元素，列如p，div，table，ul
 				- get： 内容裸露在url, post相对安全
 			3、数量
 				- get 数据量交于post少
-		-->   
-		<!--
-			input属相：
-				type： 类型（text，password，button，submit）
-				name： 表示数据对应的参数名
-				value： 值
-				placeholder： 提示语
-				disable： 不可用状态
-		-->
-		<form action="http://c14.bluej.cn/api/form.php" method="post" >
-			<div class="about">
-				用户名： <input type="text" name="username" value="" / placeholder="请输入用户名"> 
-			</div>
-			<div class="about">
-				密码： <input type="password" name="password" value="" placeholder="请输入用户密码" />
-			</div>
-			<input type="submit" value="提交"/>
-		</form>
+		-->  
+```html			 
+<!--
+	input属相：
+		type： 类型（text，password，button，submit）
+		name： 表示数据对应的参数名
+		value： 值
+		placeholder： 提示语
+		disable： 不可用状态
+-->
+<form action="http://c14.bluej.cn/api/form.php" method="post" >
+	<div class="about">
+		用户名： <input type="text" name="username" value="" / placeholder="请输入用户名"> 
+	</div>
+	<div class="about">
+		密码： <input type="password" name="password" value="" placeholder="请输入用户密码" />
+	</div>
+	<input type="submit" value="提交"/>
+</form>
+```
 		
 #### 表单常用类型
 	
 	input：
-		
-			<div>
-				用户： <input type="text" name="username" />
-			</div>
-			<div>
-				密码： <input type="password" name="password" />
-			</div>
-			<div>
-				手机号： <input type="number" name="number" />
-			</div>
-			<div>
-				<!--
-				
-			radio单选：如果是使用表示同一组数据的不用选项，就要设置相同的name的值
-			lable 标签的作用是将输入项或选项及其标签文字关联起来。
-			label的for属相相同时，就可以点击label选中radio，id是惟一的
-			-->
-				<label for="man">
-				男生： <input type="radio" name="sex" id="man" />
-			</label>
-				<label for="woman">
-				女生： <input type="radio" name="sex" id="woman"/>
-			</label>
-			</div>
-			<div>
-				<!--
-				checkbox：单选多选
-				
-			-->
-				擅长：
-				<label for="lol">英雄联盟<input type="checkbox" name="lol" id="lol" checked="checked"/></label>
-				<label for="王之荣耀">王之荣耀<input type="checkbox" name="王之荣耀" id="王之荣耀" /></label>
-			</div>
-			
-	下拉框：
-		
-		<div>
-				<!--
-				下拉框：
-				option： 分组
-				optgroup的label： 设置组名
-				size： 下拉列表框的显示行数
-				multiple			是否多选
-				disabled			是否禁用
-				selected			设置默认选中的选项
-				value			选项的值
-
-			-->
-				地址：
-				<select name="city">
-					<option value="gz">广州</option>
-					<option value="sh">深圳</option>
-					<option value="zh">珠海</option>
-					<option value="qy">清远</option>
-					<option value="bj">北京</option>
-				</select>
-		</div>
 	
+```html		
+<div>
+	用户： <input type="text" name="username" />
+</div>
+<div>
+	密码： <input type="password" name="password" />
+</div>
+<div>
+	手机号： <input type="number" name="number" />
+</div>
+<div>
+	<!--
+	
+radio单选：如果是使用表示同一组数据的不用选项，就要设置相同的name的值
+lable 标签的作用是将输入项或选项及其标签文字关联起来。
+label的for属相相同时，就可以点击label选中radio，id是惟一的
+-->
+	<label for="man">
+	男生： <input type="radio" name="sex" id="man" />
+</label>
+	<label for="woman">
+	女生： <input type="radio" name="sex" id="woman"/>
+</label>
+</div>
+<div>
+
+
+	<!--
+	checkbox：单选多选
+	
+-->
+	擅长：
+	<label for="lol">英雄联盟<input type="checkbox" name="lol" id="lol" checked="checked"/></label>
+	<label for="王之荣耀">王之荣耀<input type="checkbox" name="王之荣耀" id="王之荣耀" /></label>
+</div>
+``` 		
+	
+	下拉框：
+	
+```html		
+<div>
+	<!--
+	下拉框：
+	option： 分组
+	optgroup的label： 设置组名
+	size： 下拉列表框的显示行数
+	multiple			是否多选
+	disabled			是否禁用
+	selected			设置默认选中的选项
+	value			选项的值
+
+-->
+	地址：
+	<select name="city">
+		<option value="gz">广州</option>
+		<option value="sh">深圳</option>
+		<option value="zh">珠海</option>
+		<option value="qy">清远</option>
+		<option value="bj">北京</option>
+	</select>
+</div>
+```	
 
 [表格和表单制作简历案例：](https://struggle-wjf.gitee.io/table_resume__dome/)
 
@@ -327,27 +337,28 @@ p元素是块级元素，不能嵌套块级元素，列如p，div，table，ul
 	
 a标签和iframe的配合使用：
 
-		_parent让父框架进行跳转
-		
-		<a href="https://www.baidu.com/" target="_parent">跳转百度页面</a>
-		<br />
-		_self自身跳转
-		
-		<a href="https://www.baidu.com/" target="_self">跳转百度页面</a>
-		
-		_top 让最顶层的框架跳转,也就是最外层
-		
-		<a href="https://www.baidu.com/" target="_top">跳转百度页面</a>
-		
-			1._blank      <a href="document.html" target="_blank">my document</a> 
-                  	浏览器会另开一个新窗口显示document.html文档   
-			2._parent     <a href="document.html" target="_parent">my document</a>      
-			                  指向父frameset文档   
-			3._self       <a href="document.html" target="_self">my document</a>           
-			                  把文档调入当前页框  
-			4._top        <a href="document.html" target="_top">my document</a>          
-			                  去掉所有页框并用document.html取代frameset文档   
-			
+```html
+_parent让父框架进行跳转
+
+<a href="https://www.baidu.com/" target="_parent">跳转百度页面</a>
+<br />
+_self自身跳转
+
+<a href="https://www.baidu.com/" target="_self">跳转百度页面</a>
+
+_top 让最顶层的框架跳转,也就是最外层
+
+<a href="https://www.baidu.com/" target="_top">跳转百度页面</a>
+
+	1._blank      <a href="document.html" target="_blank">my document</a> 
+          	浏览器会另开一个新窗口显示document.html文档   
+	2._parent     <a href="document.html" target="_parent">my document</a>      
+	                  指向父frameset文档   
+	3._self       <a href="document.html" target="_self">my document</a>           
+	                  把文档调入当前页框  
+	4._top        <a href="document.html" target="_top">my document</a>          
+	                  去掉所有页框并用document.html取代frameset文档   
+```			
 
 <a name="音频、视频"></a>
 
@@ -367,14 +378,14 @@ a标签和iframe的配合使用：
 		</audio>
 		
 音频的兼容性写法
-
-		<audio>
-			<source src="media/music.mp3" type="audio/mp3" />
-			<source src="media/ogg.ogg" type="audio/ogg" />
-			<p>Your browser does not support the audio tag.</p>
-			<a href="media/ogg.mp3">点击下载此视频</a>
-		</audio>
-		
+```html
+<audio>
+	<source src="media/music.mp3" type="audio/mp3" />
+	<source src="media/ogg.ogg" type="audio/ogg" />
+	<p>Your browser does not support the audio tag.</p>
+	<a href="media/ogg.mp3">点击下载此视频</a>
+</audio>
+```		
 - source： 引入资源
 - type： 音频类型
 
@@ -395,18 +406,18 @@ video
 	<video src="media/video.mp4" controls="controls" autoplay="autoplay"></video>
 	
 视频兼容性写法：
-
-		<video width="800" height="">
-			<source src="media/video.flv" type="video/mp4"></source>
-			<source src="media/video.mp4" type="video/mp4"></source>
-			<source src="media/video.webm" type="video/webm"></source>
-			<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
-				<param name="movie" value="myvideo.swf" />
-				<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
-			</object>
-			当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
-		</video>
-	
+```html
+<video width="800" height="">
+	<source src="media/video.flv" type="video/mp4"></source>
+	<source src="media/video.mp4" type="video/mp4"></source>
+	<source src="media/video.webm" type="video/webm"></source>
+	<object width="" height="" type="application/x-shockwave-flash" data="myvideo.swf">
+		<param name="movie" value="myvideo.swf" />
+		<param name="flashvars" value="autostart=true&amp;file=myvideo.swf" />
+	</object>
+	当前浏览器不支持 video直接播放，点击这里下载视频： <a href="myvideo.webm">下载视频</a>
+</video>
+```
 <a name="什么是css"></a>
 
 ### 什么是css
@@ -440,29 +451,31 @@ video
 **
 		
 		例：
-		
+```html			
 			<body style="background-color:#ccccc;">
 		
 			<h1 style="font-size:12px; color:#ff0000;">这是一个标题</h1>
-
+```
 
 2. 页内引用	
 
 页内引用作为页面中的一个单独部分，由```<style></style>```标签定位在```<head></head>```之中。
 
 	例：
+```html		
 			<style type="text/css">
 				div {
 					color: blue;
 					font-size: 16px;
 				}
 			</style>
-
+```
 3、外部引入
 	
 外部样式表是CSS应用中最好的一种形式，它将CSS样式代码单独放在一个外部文件中，再由网页进行调用。
 		
 		如：	
+```html			
 		style.css	:
 	
 		body {
@@ -470,7 +483,7 @@ video
 		}
 	
 		<link rel="stylesheet" type="text/css" href="style.css" />
-
+```
 **优先级比较**
 
 - 优先级依次是：就近原则
@@ -555,7 +568,7 @@ video
 
 - 事列：关系选择符.html
 
-```
+```html
 	/*包含选择符所有a下的为红色*/
 			.seon1 a {
 				color: red; 
@@ -646,7 +659,7 @@ video
 - id 选择器以 "#" 来定义。
 
 - 例： id 选择符
-
+```html	
 		<p id="p1"> 这是一个段落 </p>
 
 		#p1 {
@@ -661,6 +674,7 @@ video
 		  font-size:12px;
 		  font-weight:bold;
 		}
+```		
 >在网页中，每个id名称中只能使用一次，不得重复。
 
 >与id 不同，class 允许重复使用。比如页面中的多个元素，都可以使用同一个样式定义。
@@ -700,7 +714,7 @@ video
 - 1、交互效果
 - 2、选择第n个元素
 	
-	
+```html		
 		<style type="text/css">
 			/*设置超链接a在未被访问前的样式。*/
 			a:link {
@@ -734,11 +748,13 @@ video
 		<input type="checkbox" checked="checked" id="check"/>
 		<label for="check">选中		
 		</label>
+```
 
 * 伪类选择器child系列
 	- 选择器：第几个儿子
 	- nth里面的括号要传入的1开始的值，可以结合未知数n来使用
 	
+```html		
 			/*匹配父元素的第一个子元素E。*/
 			ul li:first-child {
 				color: blue;
@@ -762,11 +778,12 @@ video
 			<li>伪类选择器4</li>
 			<li>伪类选择器5</li>
 		</ul>	
+```
 		
 **第n个儿子和同类型的才能匹配**
 
 - span无效果
-
+```html	
 		ul li:nth-child(2) {
 			text-decoration: underline;
 		}
@@ -777,6 +794,7 @@ video
 			<li>伪类选择器4</li>
 			<li>伪类选择器5</li>
 		</ul>
+```
 		
 相反，type类型的没child限制
 
@@ -787,7 +805,7 @@ video
 		ol li:nth-of-type(2n) {
 			letter-spacing: 5px;
 		}
-			
+```html				
 		<ol>
 			<li>匹配同类型中的选择器1</li>
 			<span>匹配同类型中的选择器2</span>
@@ -797,7 +815,7 @@ video
 			<li>匹配同类型中的选择器6</li>
 			<li>匹配同类型中的选择器7</li>
 		</ol>
-		
+```		
 **[返回目录](#zore)**
 
 -----------------------------------------------
@@ -815,38 +833,40 @@ video
 | E[attr\="val"]    | css3 |   选择具有att属性且属性值且以val开头并且用"-"分隔的字符串的E元素。   |
 
 事列1：
-```
-<style type="text/css">
-			a {
-				display: block;
-				margin-top: 20px;
-				text-decoration: none;
-				color:#000;
-			}
-			a[class^='column'] {
-				background: red;
-			}
-			a[href$="doc"] {
-				background: green;
-			}
-			a[title*="box"] {
-				background: blue;
-			}
-		</style>
-	</head>
 
-	<body>
-		<a href="##" class="columnNews">我的背景想变成红色</a>
-		<a href="##" class="columnVideo">我的背景想变成红色</a>
-		<a href="##" class="columnAboutUs">我的背景想变成红色</a>
-		<a href="1.doc">我的背景想变成绿色</a>
-		<a href="2.doc">我的背景想变成绿色</a>
-		<a href="##" title="this is a box">我的背景想变成蓝色</a>
-		<a href="##" title="box1">我的背景想变成蓝色</a>
-		<a href="##" title="there is two boxs">我的背景想变成蓝色</a>
+```html
+<style type="text/css">
+a {
+	display: block;
+	margin-top: 20px;
+	text-decoration: none;
+	color:#000;
+}
+a[class^='column'] {
+	background: red;
+}
+a[href$="doc"] {
+	background: green;
+}
+a[title*="box"] {
+	background: blue;
+}
+</style>
+</head>
+
+<body>
+<a href="##" class="columnNews">我的背景想变成红色</a>
+<a href="##" class="columnVideo">我的背景想变成红色</a>
+<a href="##" class="columnAboutUs">我的背景想变成红色</a>
+<a href="1.doc">我的背景想变成绿色</a>
+<a href="2.doc">我的背景想变成绿色</a>
+<a href="##" title="this is a box">我的背景想变成蓝色</a>
+<a href="##" title="box1">我的背景想变成蓝色</a>
+<a href="##" title="there is two boxs">我的背景想变成蓝色</a>
+```
 
 事列2：
-
+```html	
 	</body>
 			input[type="button"] {
 				font-size: 30px;
@@ -925,7 +945,7 @@ E::placeholder  : 设置对象文字占位符的样式。兼容性不好，同�
 		当表单背景色为类似的颜色时它可能效果并不是很明显，那么就可以使用这个伪元素来改变文字占位符的颜色。
 	
 事列：    
-```
+```html
 <style type="text/css">
 			/*p元素前面插入123*/
 			p::before {
@@ -1052,7 +1072,7 @@ E::placeholder  : 设置对象文字占位符的样式。兼容性不好，同�
 		
 # CSS布局
 > 传统布局div + css
-```
+```html
 <div id="header">页面头部</div>
 
 <div id="content">
@@ -1061,12 +1081,14 @@ E::placeholder  : 设置对象文字占位符的样式。兼容性不好，同�
 </div>
 
 <div id="footer">页脚</div>
-> 并列与嵌套div结构
 ```
+> 并列与嵌套div结构
+
 - ![传统布局样式](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1535351869334&di=34374b8490d6a17c20dfbb119ecd6900&imgtype=0&src=http%3A%2F%2Fimage.codes51.com%2FArticle%2Fimage%2F20160301%2F20160301092939_5974.png)
 
 - 设配IE9以及主流手机端页面布局方式
-```
+
+```html
 <header>页面头部
 	<nav>导航</nav>
 </header>
@@ -1075,6 +1097,7 @@ E::placeholder  : 设置对象文字占位符的样式。兼容性不好，同�
 	<article></article>
 </section>
 <footer>页脚</footer>
+
 ```
 -  ![主流布局样式] (http://www.html5jscss.com/pic/htmljscss/html5-layout.jpg)
 ### 块级元素
@@ -1148,7 +1171,7 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
   - 当z-index未定义或者值为auto时，在IE6,7下会创建新的局部层叠上下文，而在高级浏览器中，按照规范不产生新的局部层叠上下文
   
 实现一个简单的层级效果
-
+```html	
 		<style type="text/css">
 			div {
 				position: absolute;				
@@ -1224,7 +1247,7 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 		<div class="boxS">
 			<div class="boxS1">111</div>
 		</div>
-		
+```		
 **[返回目录](#zore)**
 
 <a name="边框"></a>
@@ -1288,35 +1311,35 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 	- border-radius: 25px;可以是具体的像素，也可以是百分比%
 	
 例子：
+```html	
+/* 所有角都使用半径为10px的圆角 */ 
+div{ border-radius:10px;}  
 
-		/* 所有角都使用半径为10px的圆角 */ 
-		div{ border-radius:10px;}  
-		
-		/* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */ 
-		div{ border-radius: 5px 4px 3px 2px; }
-			
-		/*也可以分别设置每个角的垂直半径和水平半径,用斜杠隔开，第一个参数表示左上角开始顺时针的水平半径，第二个参数表示左上角开始顺时针的垂直半径*/
-		div{ border-radius: 10px 20px 30px 40px  /  5px 10px 15px 20px; }
-		
-		/*圆*/
-		div{ border-radius:50% }
-		
-		<div>
-			这是一个有边框的圆角
-		</div>
-		
-		div {
-			width: 200px;
-			height: 200px;
-			border: 2px solid;
-			border-radius: 25px;
-			-moz-border-radius: 25px;
-			text-align: center;
-		}
-		
+/* 四个半径值分别是左上角、右上角、右下角和左下角，顺时针 */ 
+div{ border-radius: 5px 4px 3px 2px; }
+	
+/*也可以分别设置每个角的垂直半径和水平半径,用斜杠隔开，第一个参数表示左上角开始顺时针的水平半径，第二个参数表示左上角开始顺时针的垂直半径*/
+div{ border-radius: 10px 20px 30px 40px  /  5px 10px 15px 20px; }
+
+/*圆*/
+div{ border-radius:50% }
+
+<div>
+	这是一个有边框的圆角
+</div>
+
+div {
+	width: 200px;
+	height: 200px;
+	border: 2px solid;
+	border-radius: 25px;
+	-moz-border-radius: 25px;
+	text-align: center;
+}
+```		
 		
 - border-img圆角边框
-
+```html	
 			<style>
 			body
 			{
@@ -1378,6 +1401,7 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 			border-image 属性允许您规定用于边框的图片！
 		</div>
 		</body>
+```
 
 **[返回目录](#zore)**
 
@@ -1391,12 +1415,12 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 			font-family: "微软雅黑",arial,"黑体";
 			font-weight: 400;
 		}
+		
 - font-size：字体大小
 		
 		p {
 			font-size: 16px;
-		}
-		
+		}	
 - font-style：字体样式
 
 		font-style : normal | italic | oblique 
@@ -1415,28 +1439,29 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 
 在阿里云字体图标中去引用
 
-		@font-face {font-family: "iconfont";
-		  src: url('iconfont.eot?t=1537861818426'); /* IE9*/
-		  src: url('iconfont.eot?t=1537861818426#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		  url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAWEAAsAAAAACCgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY8r0ivY21hcAAAAYAAAABfAAABnLSUHiVnbHlmAAAB4AAAAZ0AAAHstzmbCWhlYWQAAAOAAAAALwAAADYSz1dxaGhlYQAAA7AAAAAgAAAAJAfvA5NobXR4AAAD0AAAABAAAAAQEA8AAGxvY2EAAAPgAAAACgAAAAoBRgCubWF4cAAAA+wAAAAfAAAAIAERAEZuYW1lAAAEDAAAAUUAAAJtPlT+fXBvc3QAAAVUAAAALwAAAECwRGwWeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWGcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByeWTzbwdzwv4EhhrmRoREozAiSAwDwxQzZeJztkMEJgDAMRV/aKkUcxaOI80gPjtiJukZNEw8O4Q8vJJ+QwwcmICqbkkBuhKFLXTE/spifOHTPWgHa2UqrvX8nk9hF1in4B5n5tVrf3y2O1BzLsjjmVwd5APRZFnoAeJw1kD1P21AUhs97fT8SJzFx7MQTLgZhu0soTmwUKYQNZ+jasRIsYetfgG7tFDrC1JEBVenCGHVn6x+oVKQOZqjUjxG31005w3nv8JxzHl0ySJfxkn2lGkX0jGjbgttLsmFodAeOsqB8eEEahFG6FyTZASZI+4iCCI8cXvlxPI7jH/lpwjgQ+7gqZxIbED2/diYYnPbD7yf4tMKuUfVxzLLD8ueLmlPzY+SQfOy0vwkl2g4OH27/M1qNEf055W3jNW3SiKiOcFNB6ssHsLXZIJ1gT2d3oNP2KiFDO29Vjjq7W32kNrLEA6+XO73MLXdUy1H72PbvkKfDnN2th9hXHesdmuYNO5pOj9iN2cKJ6iic4BKfXbfsq05LTsqmRmdpDj04Q7iOXxPZ6pS7ZhOj6TFwPB3pHSzQs6q8qL5Vu38x3hs+Ncijp0RCW618rX+PlaQPx/Oh5BpkGIWpPcwGCaNFIUSx+FhwXnyYLzlfzs+r/ryoC8FFYbrSWGuoDX6/WJGL+/yROZ8v8f2tdE3B3whhSgW7YRH9BZ5CYE4AAAB4nGNgZGBgAOLii1p98fw2Xxm4WRhA4PoFzl0I+n89iwBzI5DLwcAEEgUAMb0KoQB4nGNgZGBgbvjfwBDDws/A8P8/iwADUAQFsAAAdIYEigQAAAAEAAAABA8AAAQAAAAAAAAAAFAArgD2AAB4nGNgZGBgYGGwYmBmAAEmIOYCQgaG/2A+AwAOpQFYAHicZY9NTsMwEIVf+gekEqqoYIfkBWIBKP0Rq25YVGr3XXTfpk6bKokjx63UA3AejsAJOALcgDvwSCebNpbH37x5Y08A3OAHHo7fLfeRPVwyO3INF7gXrlN/EG6QX4SbaONVuEX9TdjHM6bCbXRheYPXuGL2hHdhDx18CNdwjU/hOvUv4Qb5W7iJO/wKt9Dx6sI+5l5XuI1HL/bHVi+cXqnlQcWhySKTOb+CmV7vkoWt0uqca1vEJlODoF9JU51pW91T7NdD5yIVWZOqCas6SYzKrdnq0AUb5/JRrxeJHoQm5Vhj/rbGAo5xBYUlDowxQhhkiMro6DtVZvSvsUPCXntWPc3ndFsU1P9zhQEC9M9cU7qy0nk6T4E9XxtSdXQrbsuelDSRXs1JErJCXta2VELqATZlV44RelzRiT8oZ0j/AAlabsgAAAB4nGNgYoAALgbsgIWRiZGZkYWRlYElMdPMjK04I7+0MpUtKT8tMS+dgQEAStkGcwA=') format('woff'),
-		  url('iconfont.ttf?t=1537861818426') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-		  url('iconfont.svg?t=1537861818426#iconfont') format('svg'); /* iOS 4.1- */
-		}
-		
-		.iconfont {
-		  font-family:"iconfont" !important;
-		  font-size:16px;
-		  font-style:normal;
-		  -webkit-font-smoothing: antialiased;
-		  -moz-osx-font-smoothing: grayscale;
-		}
-		
-		.icon-ai66:before { content: "\e6b8"; }
-		
-		.icon-shouye:before { content: "\e638"; }
-		
-		.icon-play:before { content: "\e664"; }
-		
+```css
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1537861818426'); /* IE9*/
+  src: url('iconfont.eot?t=1537861818426#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAWEAAsAAAAACCgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY8r0ivY21hcAAAAYAAAABfAAABnLSUHiVnbHlmAAAB4AAAAZ0AAAHstzmbCWhlYWQAAAOAAAAALwAAADYSz1dxaGhlYQAAA7AAAAAgAAAAJAfvA5NobXR4AAAD0AAAABAAAAAQEA8AAGxvY2EAAAPgAAAACgAAAAoBRgCubWF4cAAAA+wAAAAfAAAAIAERAEZuYW1lAAAEDAAAAUUAAAJtPlT+fXBvc3QAAAVUAAAALwAAAECwRGwWeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWGcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByeWTzbwdzwv4EhhrmRoREozAiSAwDwxQzZeJztkMEJgDAMRV/aKkUcxaOI80gPjtiJukZNEw8O4Q8vJJ+QwwcmICqbkkBuhKFLXTE/spifOHTPWgHa2UqrvX8nk9hF1in4B5n5tVrf3y2O1BzLsjjmVwd5APRZFnoAeJw1kD1P21AUhs97fT8SJzFx7MQTLgZhu0soTmwUKYQNZ+jasRIsYetfgG7tFDrC1JEBVenCGHVn6x+oVKQOZqjUjxG31005w3nv8JxzHl0ySJfxkn2lGkX0jGjbgttLsmFodAeOsqB8eEEahFG6FyTZASZI+4iCCI8cXvlxPI7jH/lpwjgQ+7gqZxIbED2/diYYnPbD7yf4tMKuUfVxzLLD8ueLmlPzY+SQfOy0vwkl2g4OH27/M1qNEf055W3jNW3SiKiOcFNB6ssHsLXZIJ1gT2d3oNP2KiFDO29Vjjq7W32kNrLEA6+XO73MLXdUy1H72PbvkKfDnN2th9hXHesdmuYNO5pOj9iN2cKJ6iic4BKfXbfsq05LTsqmRmdpDj04Q7iOXxPZ6pS7ZhOj6TFwPB3pHSzQs6q8qL5Vu38x3hs+Ncijp0RCW618rX+PlaQPx/Oh5BpkGIWpPcwGCaNFIUSx+FhwXnyYLzlfzs+r/ryoC8FFYbrSWGuoDX6/WJGL+/yROZ8v8f2tdE3B3whhSgW7YRH9BZ5CYE4AAAB4nGNgZGBgAOLii1p98fw2Xxm4WRhA4PoFzl0I+n89iwBzI5DLwcAEEgUAMb0KoQB4nGNgZGBgbvjfwBDDws/A8P8/iwADUAQFsAAAdIYEigQAAAAEAAAABA8AAAQAAAAAAAAAAFAArgD2AAB4nGNgZGBgYGGwYmBmAAEmIOYCQgaG/2A+AwAOpQFYAHicZY9NTsMwEIVf+gekEqqoYIfkBWIBKP0Rq25YVGr3XXTfpk6bKokjx63UA3AejsAJOALcgDvwSCebNpbH37x5Y08A3OAHHo7fLfeRPVwyO3INF7gXrlN/EG6QX4SbaONVuEX9TdjHM6bCbXRheYPXuGL2hHdhDx18CNdwjU/hOvUv4Qb5W7iJO/wKt9Dx6sI+5l5XuI1HL/bHVi+cXqnlQcWhySKTOb+CmV7vkoWt0uqca1vEJlODoF9JU51pW91T7NdD5yIVWZOqCas6SYzKrdnq0AUb5/JRrxeJHoQm5Vhj/rbGAo5xBYUlDowxQhhkiMro6DtVZvSvsUPCXntWPc3ndFsU1P9zhQEC9M9cU7qy0nk6T4E9XxtSdXQrbsuelDSRXs1JErJCXta2VELqATZlV44RelzRiT8oZ0j/AAlabsgAAAB4nGNgYoAALgbsgIWRiZGZkYWRlYElMdPMjK04I7+0MpUtKT8tMS+dgQEAStkGcwA=') format('woff'),
+  url('iconfont.ttf?t=1537861818426') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1537861818426#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ai66:before { content: "\e6b8"; }
+
+.icon-shouye:before { content: "\e638"; }
+
+.icon-play:before { content: "\e664"; }
+```		
 - 在HTML中link标签引入css文件
 
 - 使用方法：
@@ -1485,7 +1510,7 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 	end：内容对齐结束边界。（CSS3）
 	
 3、文字溢出
-		
+```css		
 		/*文字在一行内的省略号*/
 		.textOverflow1 {
 			text-overflow: ellipsis; /*超出部分显示...*/
@@ -1510,11 +1535,11 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 			-webkit-line-clamp: 3;/*这是要显示的行数*/
 			-webkit-box-orient: vertical;/*设置排版方向为从上到下*/
 		}
-
+```
 4、 text-shadow
 
 取值：
-
+```html	
 	none：无阴影
 	
 	<length>①：第1个长度值用来设置对象的阴影水平偏移值。可以为负值
@@ -1548,7 +1573,7 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 				</li>
 			</ul>
 		</body>
-
+```
 5、box-shadow和text-shadow用法相似
 
 [实战中布局演示](https://struggle-wjf.gitee.io/new_word_static_web_page/)
@@ -1694,7 +1719,7 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 2、给父元素添加overflow:auto即可(除了ie6要用zoom:1,其余都支持)
 
 3、使用after伪对象清除浮动(支持IE8以上浏览器,但IE8只支持单冒号写法`:after`)
-
+```css
 		.clearfix::after{
 			display:block;
 			clear:both;
@@ -1706,11 +1731,12 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 		.clearfix {
 			zoom: 1; /*兼容ie*/
 		}
+```
 
 **为什么要清除浮动**
 
 浮动的元素不占据空间，父元素无法用内容来撑开
-
+```css
 		<div class="box clearfix">
 			<div class="son1 fl ">
 				设置浮动元素
@@ -1731,7 +1757,7 @@ input、select、textarea、 img  置换元素（通过属性来控制显示的�
 				 * */
 				border: 1px solid #ADFF2F;
 			}
-			
+```			
 **[返回目录](#zore)**
 
 <a name="过渡"><a/>
@@ -1774,7 +1800,7 @@ Safari 需要前缀 -webkit-。
 - 也可以结合起来写： transition：属性 时间 动画 延迟
 
 列如：
-
+```css	
 		div {
 				width: 130px;
 				height: 50px;
@@ -1802,7 +1828,7 @@ Safari 需要前缀 -webkit-。
 		<div class="link">css教程</div>
 		<div class="link">css教程</div>
 		<div class="link">css教程</div>
-
+```
 <a name="变形"><a/>
 
 ### 变形transform
@@ -1818,7 +1844,7 @@ CSS3 转换
 
 2D 转换
 在本章中，您将学到如下 2D 转换方法：
-
+```css	
 		matrix()：以一个含六值的(a,b,c,d,e,f)变换矩阵的形式指定一个2D变换，相当于直接应用一个[a,b,c,d,e,f]变换矩阵
 		translate()：指定对象的2D translation（2D平移）。第一个参数对应X轴，第二个参数对应Y轴。如果第二个参数未提供，则默认值为0
 		translatex()：指定对象X轴（水平方向）的平移
@@ -1873,9 +1899,9 @@ CSS3 转换
 						-webkit-transform:matrix(0.866,0.5,-0.5,0.866,0,0);	/* Safari and Chrome */
 						-o-transform:matrix(0.866,0.5,-0.5,0.866,0,0);		/* Opera */
 						}
-
+```
 3D Transform Functions：
-
+```css
 		matrix3d()：以一个4x4矩阵的形式指定一个3D变换
 		translate3d()：指定对象的3D位移。第1个参数对应X轴，第2个参数对应Y轴，第3个参数对应Z轴，参数不允许省略
 		translatez()：指定对象Z轴的平移
@@ -1906,7 +1932,7 @@ CSS3 转换
 			-webkit-transform: rotateY(120deg);	/* Safari 和 Chrome */
 			-moz-transform: rotateY(120deg);	/* Firefox */
 		}
-		
+```		
 **利用过渡和变形实现css奇妙图形**
 
 **心形图**
@@ -1914,7 +1940,7 @@ CSS3 转换
 ![](https://images2018.cnblogs.com/blog/755438/201803/755438-20180329214731883-314703565.png)
 
 实现原理：利用伪类和旋转角度实现
-
+```css
 		<div class="LovePic">
 			<h1>heart Shaped</h1>
 		</div>
@@ -1952,11 +1978,11 @@ CSS3 转换
 				left: 0;
 				top: -170px;	
 			}
-			
+```			
 **气泡三角形**
 
 ![](https://images2018.cnblogs.com/blog/755438/201803/755438-20180329215026949-162086909.png)
-		
+```css		
 		<div class="trangle">
 			<h1>heart Shaped</h1>
 		</div>
@@ -1995,13 +2021,13 @@ CSS3 转换
 				border-right: 50px solid transparent;
 			    margin-left: 50px;
 			}
-
+```
 **右边菜单栏过渡效果**
 
 ![](http://edu.bluej.cn/public/uploads/20180427/20180427154150Honeycam.gif)
 
 实现原理：利用transition和tranform实现
-
+```css
 		* {
 				margin: 0;
 				padding: 0;
@@ -2123,11 +2149,11 @@ CSS3 转换
 				</li>
 			</ul>
 		</div>
-
+```
 **筛子立体图效果**
 
 ![](https://images2015.cnblogs.com/blog/967327/201610/967327-20161007183013192-1320367994.png)
-
+```css
 		.shaizai {
 				width: 100px;
 				height: 100px;
@@ -2183,3 +2209,4 @@ CSS3 转换
 			<div class="side front">5</div>
 			<div class="side back">6</div>
 		</div>
+```
