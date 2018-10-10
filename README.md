@@ -2,6 +2,17 @@
 
 # CSS3+HTML5笔记
 
+* HTML5笔记
+	- [html基础](#html基础)
+	- [html段落](#html段落)
+	- [文本格式化](#文本格式化)
+	- [a标签](#a标签)
+	- [表格](#表格)
+	- [表单](#表单)
+	- [内联框架](#内联框架)
+	- [音频+视频](#音频、视频)
+
+	
 * CSS和CSS3基础知识点大全
 	- [什么是css](#什么是css)
 	- [css引入](#css引入)
@@ -15,19 +26,9 @@
 	- [浮动](#浮动)
 	- [过渡](#过渡)
 	- [变形](#变形)
-
-
-* HTML5笔记
-	- [html基础](#html基础)
-	- [html段落](#html段落)
-	- [文本格式化](#文本格式化)
-	- [a标签](#a标签)
-	- [表格](#表格)
-	- [表单](#表单)
-	- [内联框架](#内联框架)
-	- [音频+视频](#音频、视频)
-	
-	
+	- [动画](#动画)
+		
+		
 ## 什么是 HTML？
 
 > HTML 是用来描述网页的一种语言。
@@ -1794,7 +1795,10 @@ Safari 需要前缀 -webkit-。
 		ease-in：加速
 		ease-out：减速
 		ease-in-out：先加速后减速
-				
+- 贝塞尔曲线:	http://cubic-bezier.com	
+	
+![](http://dtop.powereasy.net/UploadFiles/Article/20141/201401031725140963.png)
+
 - transition-delay	规定过渡效果何时开始。默认是 0。
 
 - 也可以结合起来写： transition：属性 时间 动画 延迟
@@ -1901,6 +1905,19 @@ CSS3 转换
 						}
 ```
 3D Transform Functions：
+
+网页中的3d坐标，如下如：
+
+![](http://html5book.bluej.cn/static/images/css/3d/3d_1.png)
+
+> 秘诀：伸出右手，大拇指对着自己，食指对地，中指对着你面朝方向的右边。
+
+![](http://html5book.bluej.cn/static/images/css/3d/3d_2.jpg)
+
+- 大拇指代表Z轴，食指代表Y轴，中指代表X轴，指甲所在端就是该轴的正方向
+- 当你要判断物体旋转的时候，哪个方向是正，哪个方向是负？
+- 只需要把对应表示该轴的手指指向自己，顺时针方向则是正方形，逆时针方向就是负方向
+
 ```css
 		matrix3d()：以一个4x4矩阵的形式指定一个3D变换
 		translate3d()：指定对象的3D位移。第1个参数对应X轴，第2个参数对应Y轴，第3个参数对应Z轴，参数不允许省略
@@ -2028,185 +2045,272 @@ CSS3 转换
 
 实现原理：利用transition和tranform实现
 ```css
-		* {
-				margin: 0;
-				padding: 0;
-				list-style: none;
-			}
-			a {
-				text-decoration: none;
-			}
-			.box {
-				position: absolute;
-				text-align: center;
-				right: -160px;
-				width: 400px;
-			}
-			.box li {
-				color: blue;
-				padding-left: 200px;
-				text-align: left;
-				font-size: 0;
-				margin-bottom: 4px;
-			}
-			.box li:nth-child(1) {
-				transition: transform .3s linear;
-			}
-			.box li:nth-child(2) {
-				transition: transform .3s linear .1s;
-			}
-			.box li:nth-child(3) {
-				transition: transform .3s linear .2s;
-			}
-			.box li:nth-child(4) {
-				transition: transform .3s linear .3s;
-			}
-			.box li:nth-child(5) {
-				transition: transform .3s linear .4s;
-			}
-			.box li:nth-child(6) {
-				transition: transform .3s linear .5s;
-			}
-			.box li:nth-child(7) {
-				transition: transform .3s linear .6s;
-			}
-			.box li:nth-child(8) {
-				transition: transform .3s linear .7s;
-			}
-			.box li:nth-child(9) {
-				transition: transform .3s linear .8s;
-			}
-			.box li:nth-child(10) {
-				transition: transform .3s linear .9s;
-			}
-			.box li:nth-child(11) {
-				transition: transform .3s linear 1s;
-			}
-			.box li span {
-				width: 20px;
-				height: 20px;
-				display: inline-block;
-				text-align: center;				
-				font-size: 18px;
-				color: #fff;
-				background: #0000FF;
-				padding: 10px;
-				cursor: pointer;
-				vertical-align: bottom;
-			}
-			.box:hover li{
-				transform: translateX(-160px);
-			}
-			.box li span:hover {
-				background: greenyellow;
-			}
-			.box li a {
-				display: inline-block;
-				font-size: 16px;
-				width: 150px;
-				padding-left: 10px;
-				vertical-align: bottom;
-				border-bottom: 1px solid #ccc;
-			}
-			.box li a:hover {			
-				background: skyblue;
-			}
-			
-			<div class="box">
-			<ul>
-				<li>
-					<span>1</span> <a href="">站长素材</a>
-				</li>
-				<li>
-					<span>2</span><a href="">书签切换</a> 
-				</li>
-				<li>
-					<span>3</span><a href="">幻灯片</a> 
-				</li>
-				<li>
-					<span>4</span> <a href="">图片滚动正</a>
-				</li>
-				<li>
-					<span>5</span><a href="">图片滚动上</a> 
-				</li>
-				<li>
-					<span>6</span><a href="">图片无线滚动</a> 
-				</li>
-				<li>
-					<span>7</span> <a href="">文字滚动</a>
-				</li>
-				<li>
-					<span>8</span> <a href="">文字无缝滚动</a>
-				</li>
-				<li>
-					<span>9</span><a href="">其他基础效果</a> 
-				</li>
-				<li>
-					<span>10</span> <a href="">transition实现</a>
-				</li>
-				<li>
-					<span>11</span><a href="">正则表达式</a> 
-				</li>
-			</ul>
-		</div>
+* {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+	}
+	.box {
+		position: absolute;
+		text-align: center;
+		right: -160px;
+		width: 400px;
+	}
+	.box li {
+		color: blue;
+		padding-left: 200px;
+		text-align: left;
+		font-size: 0;
+		margin-bottom: 4px;
+	}
+	.box li:nth-child(1) {
+		transition: transform .3s linear;
+	}
+	.box li:nth-child(2) {
+		transition: transform .3s linear .1s;
+	}
+	.box li:nth-child(3) {
+		transition: transform .3s linear .2s;
+	}
+	.box li:nth-child(4) {
+		transition: transform .3s linear .3s;
+	}
+	.box li:nth-child(5) {
+		transition: transform .3s linear .4s;
+	}
+	.box li:nth-child(6) {
+		transition: transform .3s linear .5s;
+	}
+	.box li:nth-child(7) {
+		transition: transform .3s linear .6s;
+	}
+	.box li:nth-child(8) {
+		transition: transform .3s linear .7s;
+	}
+	.box li:nth-child(9) {
+		transition: transform .3s linear .8s;
+	}
+	.box li:nth-child(10) {
+		transition: transform .3s linear .9s;
+	}
+	.box li:nth-child(11) {
+		transition: transform .3s linear 1s;
+	}
+	.box li span {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		text-align: center;				
+		font-size: 18px;
+		color: #fff;
+		background: #0000FF;
+		padding: 10px;
+		cursor: pointer;
+		vertical-align: bottom;
+	}
+	.box:hover li{
+		transform: translateX(-160px);
+	}
+	.box li span:hover {
+		background: greenyellow;
+	}
+	.box li a {
+		display: inline-block;
+		font-size: 16px;
+		width: 150px;
+		padding-left: 10px;
+		vertical-align: bottom;
+		border-bottom: 1px solid #ccc;
+	}
+	.box li a:hover {			
+		background: skyblue;
+	}
+	
+	<div class="box">
+	<ul>
+		<li>
+			<span>1</span> <a href="">站长素材</a>
+		</li>
+		<li>
+			<span>2</span><a href="">书签切换</a> 
+		</li>
+		<li>
+			<span>3</span><a href="">幻灯片</a> 
+		</li>
+		<li>
+			<span>4</span> <a href="">图片滚动正</a>
+		</li>
+		<li>
+			<span>5</span><a href="">图片滚动上</a> 
+		</li>
+		<li>
+			<span>6</span><a href="">图片无线滚动</a> 
+		</li>
+		<li>
+			<span>7</span> <a href="">文字滚动</a>
+		</li>
+		<li>
+			<span>8</span> <a href="">文字无缝滚动</a>
+		</li>
+		<li>
+			<span>9</span><a href="">其他基础效果</a> 
+		</li>
+		<li>
+			<span>10</span> <a href="">transition实现</a>
+		</li>
+		<li>
+			<span>11</span><a href="">正则表达式</a> 
+		</li>
+	</ul>
+</div>
 ```
 **筛子立体图效果**
 
 ![](https://images2015.cnblogs.com/blog/967327/201610/967327-20161007183013192-1320367994.png)
 ```css
-		.shaizai {
-				width: 100px;
-				height: 100px;
-				line-height: 100px;
-				margin: 100px;
-				text-align: center;
-				/*3d模式*/
-				transform-style: preserve-3d;
-				position: relative;
-				transition: all 10s;
-			}
-			.shaizai:hover {
-				transform: rotateX(360deg) rotateY(360deg);
-			}
-			.side {
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-				opacity: .5;
-			}
-			.front {
-				transform: translateZ(50px);
-				background: red;
-			}
-			.back {
-				transform: rotateY(180deg) translateZ(50px) ;
-				background: skyblue;
-			}
-			.left {
-				transform:rotateY(90deg) translateZ(50px) ;
-				background: green;
-			}
-			.right {
-				transform:rotateY(-90deg) translateZ(50px) ;
-				background: orange;
-			}
-			.top {
-				transform:rotateX(-90deg) translateZ(50px) ;
-				background: pink;
-			}
-			.bottom {
-				transform:rotateX(90deg) translateZ(50px) ;
-				background: #000;
-			}
-			
-		<div class="shaizai">
-			<div class="side top">1</div>
-			<div class="side bottom">2</div>
-			<div class="side left">3</div>
-			<div class="side right">4</div>
-			<div class="side front">5</div>
-			<div class="side back">6</div>
-		</div>
+.shaizai {
+		width: 100px;
+		height: 100px;
+		line-height: 100px;
+		margin: 100px;
+		text-align: center;
+		/*3d模式*/
+		transform-style: preserve-3d;
+		position: relative;
+		transition: all 10s;
+	}
+	.shaizai:hover {
+		transform: rotateX(360deg) rotateY(360deg);
+	}
+	.side {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: .5;
+	}
+	.front {
+		transform: translateZ(50px);
+		background: red;
+	}
+	.back {
+		transform: rotateY(180deg) translateZ(50px) ;
+		background: skyblue;
+	}
+	.left {
+		transform:rotateY(90deg) translateZ(50px) ;
+		background: green;
+	}
+	.right {
+		transform:rotateY(-90deg) translateZ(50px) ;
+		background: orange;
+	}
+	.top {
+		transform:rotateX(-90deg) translateZ(50px) ;
+		background: pink;
+	}
+	.bottom {
+		transform:rotateX(90deg) translateZ(50px) ;
+		background: #000;
+	}
+	
+<div class="shaizai">
+	<div class="side top">1</div>
+	<div class="side bottom">2</div>
+	<div class="side left">3</div>
+	<div class="side right">4</div>
+	<div class="side front">5</div>
+	<div class="side back">6</div>
+</div>
 ```
+
+**[返回目录](#zore)**
+<a name="动画"></a>
+### 动画animation
+
+| 属性           | 版本         |  继承        |  描述  |
+| -------------------------   | ----------  | :----------:  |
+| animation					| CSS3 |	 无  | 复合属性。检索或设置对象所应用的动画特效 |
+| animation-name			| CSS3 | 无 	| 检索或设置对象所应用的动画名称 |
+| animation-duration 		| CSS3 | 无 	| 检索或设置对象动画的持续时间 |
+| animation-timing-function | CSS3 | 无     |	 检索或设置对象动画的过渡类型 |
+| animation-delay 			| CSS3 | 无    |	 检索或设置对象动画延迟的时间 |
+| animation-iteration-count | CSS3 | 无 	| 检索或设置对象动画的循环次数 |
+| animation-direction 		| CSS3 | 无 | 检索或设置对象动画在循环中是否反向运动 |
+| animation-play-state 		| CSS3 | 无 |	 检索或设置对象动画的状态 |
+| animation-fill-mode 		| CSS3 | 无 |	 检索或设置对象动画时间之外的状态 |
+
+**前5个与transition属性基本一致**
+```html
+<style type="text/css">
+	.ball {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		background: #0000FF;
+		animation: run 3s linear 1 alternate;
+		/*animation-fill-mode: forwards;*/
+	}
+	@keyframes run{
+		0%{
+			
+		}
+		25%{
+			transform: translateX(200px);
+		}
+		50%{
+			transform:translateX(200px) translateY(200px);
+		}
+		75%{
+			transform: translateX(0) translateY(200px);
+		}
+		100%{
+			transform:translateY(200PX);
+		}
+	}
+	.ball:hover {
+		animation-play-state: paused;
+	}
+</style>
+</head>
+<body>
+<!--
+	animation-iteration-count:（次数） infinite 无线循环
+	
+	animation-direction：
+		取值：
+		normal：正常方向
+		
+		reverse：反方向运行
+		
+		alternate：动画先正常运行再反方向运行，并持续交替运行
+		
+		alternate-reverse：动画先反运行再正方向运行，并持续交替运行
+		
+	animation-play-state：播放状态
+		默认：running
+		展停：paused
+		
+	animation-fill-mode：检索或设置对象动画时间之外的状态
+		none：默认值。不设置对象动画之外的状态
+		
+		forwards：设置对象状态为动画结束时的状态
+		
+		backwards：设置对象状态为动画开始时的状态
+		
+		both：设置对象状态为动画结束或开始的状态
+-->
+<div class="ball">
+	
+</div>
+```
+
+**动画库**
+
+[animation.css](https://daneden.github.io/animate.css/)
+
+**[返回目录](#zore)**
