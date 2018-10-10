@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*
+			 * 主意：兼容性
+			 blur   高斯模糊
+			 brightness  亮度
+			 invert （0.7）返相
+			 grayscale(1) 灰度
+			 * */
+			img {
+				filter: blur(10px) brightness(90%);
+				-webkit-filter: blur(10px) brightness(90%);
+			}
+			img {
+				filter: invert(0.7);
+				-webkit-filter: invert(0.7);
+			}
+			img {
+				filter: grayscale(1);
+				-webkit-filter: grayscale(1);
+			}
+			img {
+				/*阴影效果*/
+				filter: drop-shadow(0 0 10px green);
+				-webkit-filter: drop-shadow(0 0 10px green);
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<img src="2.png"/>
+		</div>
+	</body>
+</html>
