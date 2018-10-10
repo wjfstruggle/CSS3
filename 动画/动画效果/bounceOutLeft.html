@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			h2 {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				font-size: 16px;
+			}
+			@keyframes bounceOutLeft{
+				
+				20%{
+					transform: translate3d(20px,0,0);
+					opacity: 1;
+				}
+				to{
+					transform: translate3d(-1000px,0,0);
+					opacity: 0;
+				}
+			}
+			.bounceOutLeft {
+				animation-name: bounceOutLeft;
+			}
+			.animated {
+				animation-duration: 1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<h2 class="bounceOutLeft animated">Animate.css</h2>
+		</div>
+	</body>
+</html>

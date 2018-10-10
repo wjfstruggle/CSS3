@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../public/public.css" />
+		<link rel="stylesheet" type="text/css" href="iconfont.css" />
+		<style type="text/css">
+			.box {
+				margin-top: 20px;
+				text-align: center;
+			}
+			
+			label {
+				display: inline-block;
+				float: right;
+				color: white;
+				/* 文字描边 */
+				-webkit-text-stroke: 1px #16a085;
+				width: 1em;
+				padding: 0 .05em;
+				overflow: hidden;
+				white-space: nowrap;
+				cursor: pointer;
+			}
+			
+			input[type="radio"] {
+				display: none;
+			}
+			.box:not(:checked) >label:hover,
+			.box:not(:checked) >label:hover ~ label {
+				color: #16a085;
+				text-shadow: 0 0 3px #1abc9c;
+			}
+			.box input[type="radio"]:checked ~ label {
+				color: #16a085;
+				text-shadow: 0 0 3px #1abc9c;
+			}
+			.box label:active {
+				position: relative;
+				top: 2px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			
+			<input type="radio" id="star4" name="rating" value="" />
+			<label for="star4" class="iconfont icon-star"></label>
+			
+			<input type="radio" id="star3" name="rating"  value="" />
+			<label for="star3" class="iconfont icon-star"></label>
+			
+			
+			<input type="radio" id="star2" name="rating" value="" />
+			<label for="star2" class="iconfont icon-star"></label>
+			
+			<input type="radio" id="star1" name="rating" value="" />
+			<label for="star1" class="iconfont icon-star"></label>
+			
+			<input type="radio" id="star" name="rating" value="" />
+			<label for="star" class="iconfont icon-star"></label>
+
+		</div>
+	</body>
+
+</html>

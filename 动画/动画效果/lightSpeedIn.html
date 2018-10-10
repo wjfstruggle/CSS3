@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box {
+				width: 100px;
+				height: 100px;
+				background: #0000FF;
+			}
+			@keyframes lightSpeedIn{
+				from{
+					transform: translate3d(900px,0,0) skew(-30deg);
+					opacity: 0;
+				}
+				60%{
+					transform: skew(20deg);
+					opacity: 1;
+				}
+				80%{
+					transform: skew(-5deg);
+				}
+				to{
+					transform: translate3d(0,0,0);
+				}
+			}
+			.lightSpeedIn {
+				animation-timing-function: ease-out;
+				animation-name: lightSpeedIn;
+			}
+			.animated {
+				animation-duration: 1s;
+				animation-fill-mode: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box lightSpeedIn animated">
+			
+		</div>
+	</body>
+</html>

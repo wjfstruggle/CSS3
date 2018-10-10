@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../public/public.css"/>
+		<style type="text/css">
+			.box {
+				width: 150px;
+				height: 150px;
+				background: #0000FF;
+				border-radius: 50%;
+				position: absolute;
+				left: 50%;
+				top: 10%;
+				transform: translate(-50%,-10%);
+			}
+			@keyframes run{
+				from{
+					top: 0;
+					right: 40%;
+				}
+				25%{
+					position: absolute;
+					right: 0;
+					bottom: 150px;
+				}
+				50%{
+					position: absolute;
+					bottom: 0;
+					right: 300px;
+				}
+				75%{
+					position: absolute;
+					left: 0;
+					top: 50%;
+				}
+				to{
+					position: absolute;
+					top: 0;
+					left: 20%;
+				}
+			}
+			.run {
+				animation: run 10s linear infinite running both;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box run"></div>
+	</body>
+</html>
