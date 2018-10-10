@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/*变量：* */
+/*引入
+ * 讲其他代码拷贝进来。
+ * 注意_开头的scss文件是不会编译的*/
+.a {
+  height: 30px; }
+  .a:hover {
+    color: #0000FF; }
+
+/*重用代码块,
+ *用法：  @include font_BG
+ * 也可以传参数，参数按循序写入
+ */
+/*继承和扩展
+ @extend
+ */
+button, .btn-success, .btn-warning {
+  width: 70px;
+  height: 40px;
+  appearance: none;
+  border: 1px solid #ccc; }
+
+.btn-success {
+  background: #0000FF; }
+
+.btn-warning {
+  background: #C52D2D; }
+
+/*自定义函数*/
+.box {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  border: 1px solid #ccc; }
+  .box .box2 {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #F27C01;
+    /*&代表根元素选择器*/ }
+    .box .box2 > p {
+      font-size: 20px; }
+      .box .box2 > p:hover {
+        color: red;
+        border-bottom: 1px solid #ccc; }
+      .box .box2 > p::after {
+        content: '';
+        display: block;
+        border-right: 1px solid #0000FF; }
+
+.font_BG {
+  font-size: 20px;
+  width: 100px;
+  height: 100px;
+  background: darkblue; }
+
+/*# sourceMappingURL=css1.css.map */

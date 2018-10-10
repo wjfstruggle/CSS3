@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+/*变量：* */
+$fontColor : red;
+$border_bt : bottom;
+/*引入
+ * 讲其他代码拷贝进来。
+ * 注意_开头的scss文件是不会编译的*/
+@import'reset';
+
+/*重用代码块,
+ *用法：  @include font_BG
+ * 也可以传参数，参数按循序写入
+ */
+@mixin font_BG($font) {
+    font-size: $font;
+    width: 100px;
+    height: 100px;
+    background: darkblue;
+}
+/*继承和扩展
+ @extend
+ */
+button {
+    width: 70px;
+    height: 40px;
+    appearance: none;
+    border: 1px solid #ccc;
+}
+.btn-success {
+    @extend button;
+    background: #0000FF;
+}
+.btn-warning  {
+    @extend button;
+    background: #C52D2D;
+}
+
+/*自定义函数*/
+@function half($font) {
+    @return ($font * 2);
+}
+.box {
+    width:200px;
+    height: 200px;
+    text-align: center;
+    border: 1px solid #ccc;
+    .box2 {
+        width:100px;
+        height: 100px;
+        border: 1px solid #F27C01;
+        /*&代表根元素选择器*/
+        &>p {
+            font-size: half(10px);
+            &:hover {
+                color: $fontColor;
+                //如果变量需要镶嵌在字符串之中，就必须需要写在#{}之中。
+                border-#{$border_bt}: 1px solid #ccc ;
+            }
+            &::after {
+                content: '';
+                display: block;
+                border-right: 1px solid #0000FF;
+            }
+        }
+    }
+}
+.font_BG {
+    @include font_BG(20px);
+}
