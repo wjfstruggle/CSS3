@@ -2234,15 +2234,15 @@ CSS3 转换
 
 | 属性           | 版本         |  继承        |  描述  |
 | -------------------------   | ----------  | :----------:  |
-| animation					| CSS3 |	 无  | 复合属性。检索或设置对象所应用的动画特效 |
-| animation-name			| CSS3 | 无 	| 检索或设置对象所应用的动画名称 |
-| animation-duration 		| CSS3 | 无 	| 检索或设置对象动画的持续时间 |
-| animation-timing-function | CSS3 | 无     |	 检索或设置对象动画的过渡类型 |
-| animation-delay 			| CSS3 | 无    |	 检索或设置对象动画延迟的时间 |
-| animation-iteration-count | CSS3 | 无 	| 检索或设置对象动画的循环次数 |
-| animation-direction 		| CSS3 | 无 | 检索或设置对象动画在循环中是否反向运动 |
-| animation-play-state 		| CSS3 | 无 |	 检索或设置对象动画的状态 |
-| animation-fill-mode 		| CSS3 | 无 |	 检索或设置对象动画时间之外的状态 |
+| animation			| CSS3   | 无  | 复合属性。检索或设置对象所应用的动画特效 |
+| animation-name		| CSS3   | 无  | 检索或设置对象所应用的动画名称 |
+| animation-duration 		| CSS3   | 无  | 检索或设置对象动画的持续时间 |
+| animation-timing-function     | CSS3   | 无   | 检索或设置对象动画的过渡类型 |
+| animation-delay 		| CSS3   | 无    | 检索或设置对象动画延迟的时间 |
+| animation-iteration-count     | CSS3   | 无 	| 检索或设置对象动画的循环次数 |
+| animation-direction 		| CSS3   | 无   | 检索或设置对象动画在循环中是否反向运动 |
+| animation-play-state 		| CSS3   | 无     | 检索或设置对象动画的状态 |
+| animation-fill-mode 		| CSS3   | 无   | 检索或设置对象动画时间之外的状态 |
 
 **前5个与transition属性基本一致**
 ```html
