@@ -14,10 +14,16 @@
 				/*3d模式*/
 				transform-style: preserve-3d;
 				position: relative;
-				transition: all 10s;
+				/*无限循环滚动*/
+				animation: rotate 10s linear infinite;
 			}
-			.shaizai:hover {
-				transform: rotateX(360deg) rotateY(360deg);
+			@keyframes rotate{
+				from{
+					transform: rotateX(0) rotateY(0);
+				}
+				to{
+					transform: rotateX(360deg) rotateY(360deg);
+				}
 			}
 			.side {
 				width: 100%;
@@ -54,7 +60,7 @@
 		</style>
 	</head>
 	<body>
-		<div class="shaizai">
+		<div class="shaizai Tcenter">
 			<div class="side top">1</div>
 			<div class="side bottom">2</div>
 			<div class="side left">3</div>
