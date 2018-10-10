@@ -13,7 +13,8 @@ menu, nav, output, ruby, section, summary,
 time, mark, audio, video{font: inherit;font-family: arial;font-size: 12px;margin: 0;padding: 0;vertical-align: baseline;border: 0;}
 /* HTML5 display-role reset for older browsers */
 article,aside,footer,header,nav,section{display: block;}
-a{text-decoration: none;}
+a{text-decoration: none;cursor: pointer;}
+img{cursor: pointer;}
 body{line-height: 1;}
 ol,ul{list-style: none;}
 
@@ -67,4 +68,12 @@ ol,ul{list-style: none;}
     }
 .clearfix {
     zoom: 1; /*兼容ie*/
+}
+/*水平垂直居中*/
+
+.Tcenter {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
 }
