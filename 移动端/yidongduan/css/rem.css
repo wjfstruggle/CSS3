@@ -1,0 +1,11 @@
+html {
+  font-size: 40px; }
+
+.father {
+  font-size: 10px; }
+  .father .son {
+    width: 18.75rem;
+    font-size: 2rem;
+    background: skyblue; }
+
+/*# sourceMappingURL=rem.css.map */

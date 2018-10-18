@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+// 像素计算函数
+@function r($px) {
+    @return ($px / 40) * 1rem;
+}
+html{
+    font-size: 40px;
+}
+.father{
+    font-size: 10px;
+    .son {
+        width: r(750);
+        font-size: 2rem;
+        background: skyblue;
+    }
+}

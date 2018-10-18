@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/rem.css"/>
+		<link rel="stylesheet" type="text/css" href="../../public/public.css"/>
+	</head>
+	<body>
+		<!--em是相对父亲字体大小的单位
+			rem相对根节点字体大小单位（root rem）
+			总结：屏幕实际实际接收px，rem和em是相对单位，按照一定的比例缩放
+		-->
+		<div class="father">
+			<p>父元素</p>
+			<div class="son">子元素</div>
+		</div>
+	</body>
+	<script>
+    
+        
+    document.body.style.height = window.innerHeight + "px";
+    
+    /*动态改变根元素字体大小*/
+    function recalc() {
+    	// 客户端的宽度
+        var clientWidth = document.documentElement.clientWidth;
+        if(!clientWidth) return;
+        document.documentElement.style.fontSize = 40 * (clientWidth / 750) + 'px';
+        // 字体大小   = 1个rem单位表示多少个像素（设备的宽度   /设计宽度）
+    }
+
+    function initRecalc() {
+        recalc();
+        // if(浏览器支持横竖屏切换的事件){横竖屏事件}else{ resize事件 }
+        var resizeEvt = 'osrientationchange' in window ? 'orientationchange' : 'resize';
+        if(!document.addEventListener) return;
+        window.addEventListener(resizeEvt, recalc, false);
+        document.addEventListener('DOMContentLoaded', recalc, false);
+    }
+                
+    initRecalc();
+            
+            
+            
+        </script>
+
+</html>

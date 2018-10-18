@@ -4,16 +4,50 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<style type="text/css">
-			div {
+			.div {
 				width: 100px;
 				height: 100px;
 				/*第一个参数是起点位置开始渐变，第二第三个参数表示颜色的起点
 				 和终点，可以有多个颜色值*/
 				background: linear-gradient(to top right, red, blue, yellow, green);
+				/* 新语法，不带前缀，以支持标准兼容的浏览器（Opera 12.1， IE 10， Firefox 16， Chrome 26， Safari 6.1） */
+				background: linear-gradient(to right, blue, white); 
+			}
+			div {
+				display: inline-block;
+				text-align: center;
+				width: 120px;
+				height: 30x;
+				
+			}
+			span {
+				display: inline-block;
+				width: calc(100% - 1px);
+			}
+			div::after {
+				content: "";
+				display: inline-block;
+				width: 1px;
+				height: 30px;
+				vertical-align: middle;
+				background: linear-gradient(to top, blue, white); 
 			}
 		</style>
 	</head>
 	<body>
-		<div></div>
+		<!--
+			角度: 从6点钟方向顺时针
+				to top   0deg    从下到上  默认值
+				to right  90deg  从左到右
+				to bottom 180deg  上到下
+				to left  360deg  右到左
+			
+		-->
+		<!--
+			透明度：
+			opacity：<length>
+		-->
+		<div><span>首页</span></div>
+		<div><span>首页</span></div>
 	</body>
 </html>

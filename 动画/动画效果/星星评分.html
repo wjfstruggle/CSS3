@@ -10,6 +10,12 @@
 			.box {
 				margin-top: 20px;
 				text-align: center;
+				font-size: 0;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+				width: 500px;
 			}
 			
 			label {
@@ -28,11 +34,12 @@
 			input[type="radio"] {
 				display: none;
 			}
-			.box:not(:checked) >label:hover,
-			.box:not(:checked) >label:hover ~ label {
+			.box label:hover,
+			.box label:hover ~ label {
 				color: #16a085;
 				text-shadow: 0 0 3px #1abc9c;
 			}
+			.box input[type="radio"]:checked + label, 
 			.box input[type="radio"]:checked ~ label {
 				color: #16a085;
 				text-shadow: 0 0 3px #1abc9c;
@@ -45,23 +52,27 @@
 	</head>
 
 	<body>
-		<div class="box">
-			
+		<div class="box clearfix">
+			<!--
+				因为关系选择符只能往后选择，所以应该把高分的放在前面（点选高分时，低分也要改样式）
+				HTML布局时，要从高到低
+				
+			-->
 			<input type="radio" id="star4" name="rating" value="" />
-			<label for="star4" class="iconfont icon-star"></label>
+			<label for="star4" class="iconfont icon-star">5</label>
 			
 			<input type="radio" id="star3" name="rating"  value="" />
-			<label for="star3" class="iconfont icon-star"></label>
+			<label for="star3" class="iconfont icon-star">4</label>
 			
 			
 			<input type="radio" id="star2" name="rating" value="" />
-			<label for="star2" class="iconfont icon-star"></label>
+			<label for="star2" class="iconfont icon-star">3</label>
 			
 			<input type="radio" id="star1" name="rating" value="" />
-			<label for="star1" class="iconfont icon-star"></label>
+			<label for="star1" class="iconfont icon-star">2</label>
 			
 			<input type="radio" id="star" name="rating" value="" />
-			<label for="star" class="iconfont icon-star"></label>
+			<label for="star" class="iconfont icon-star">1</label>
 
 		</div>
 	</body>
