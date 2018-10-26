@@ -29,6 +29,8 @@
 	- [变形](#变形)
 	- [动画](#动画)
 	- [css3+html实战页面](css3+html实战页面)
+	- [sass常用语法](#sass常用语法)
+	- [移动端定宽网页适配方案](#移动端定宽网页适配方案)
 		
 		
 ## 什么是 HTML？
@@ -2357,3 +2359,414 @@ CSS3 转换
 <a name="css3+html实战页面"><a/>
 
 [css3+html实战页面演示](https://struggle-wjf.gitee.io/luban_shop/)
+
+<a name="sass常用语法"><a/>
+
+## 1、什么是sass
+
+- SASS是一种CSS的开发工具，提供了许多便利的写法，大大节省了设计者的时间，使得CSS的开发，变得简单和可维护。
+
+### 2、sass安装
+
+> 因为sass依赖于ruby环境，所以装sass之前先确认装了ruby。先导[官网下载个ruby](https://rubyinstaller.org/downloads/) 在安装的时候，请勾选Add Ruby executables to your PATH这个选项，添加环境变量，不然以后使用编译软件的时候会提示找不到ruby环境
+
+![](http://html5book.bluej.cn/static/images/css/sass1.png)
+
+- 安装完ruby之后，在开始菜单中，找到刚才我们安装的ruby，打开Start Command Prompt with Ruby
+
+![](http://html5book.bluej.cn/static/images/css/ruby-cmd.png)
+
+- 然后直接在命令行中输入
+
+		npm install sass
+		
+- 按回车键确认，等待一段时间就会提示你sass安装成功。最近因为墙的比较厉害，如果你没有安装成功，可以尝试下面方法，或参考下面的淘宝的RubyGems镜像安装sass，如果成功则忽略。
+
+		gem source --remove https://rubygems.org
+		gem source --add http://rubygems.org
+		gem sources            //查看一下是否更新源成功
+
+- 如果要安装beta版本的，可以在命令行中输入
+
+		gem install sass --pre
+		
+- 你还可以从sass的Git repository来安装，git的命令行为
+
+		git clone git://github.com/nex3/sass.git
+		cd sass
+		rake install
+- 升级sass版本的命令行为
+
+		gem update sass
+- 查看sass版本的命令行为
+
+		sass -v
+		
+- 你也可以运行帮助命令行来查看你需要的命令
+
+		sass -h
+		
+##### 3.淘宝RubyGems镜像安装 sass(安装失败请继续看)由于国内网络原因（你懂的），导致 rubygems.org 存放在 Amazon S3 上面的资源文件间歇性连接失败。这时候我们可以通过gem sources命令来配置源，先移除默认的https://rubygems.org源，然后添加淘宝的源https://ruby.taobao.org/，然后查看下当前使用的源是哪个
+
+- 关于常用gem source命令可参看：常用的gem source
+
+		$ gem sources --remove https://rubygems.org/
+		$ gem sources -a https://ruby.taobao.org/
+		$ gem sources -l
+		*** CURRENT SOURCES ***
+
+		https://ruby.taobao.org
+
+## 请确保只有 ruby.taobao.org,如果是淘宝的，则表示可以输入sass安装命令了。
+
+		$ gem install sass
+安装成功截图： ![](http://html5book.bluej.cn/static/images/css/sass2.png)
+
+### 基础入门
+
+#### 1.变量
+sass中可以定义变量，方便统一修改和维护。
+```css
+sass代码：
+
+$blue : #1875e7;　
+div {
+　color : $blue;
+}
+生成的css 代码：
+
+div {
+　color : #1875e7;
+}
+如果变量需要镶嵌在字符串之中，就必须需要写在#{}之中。
+
+$side : left;
+　　.rounded {
+　　　　border-#{$side}-radius: 5px;
+　　}
+```
+
+#### 2、嵌套
+
+- sass可以进行选择器的嵌套，表示层级关系，看起来很优雅整齐。
+
+```css
+sass代码：
+
+nav {
+  ul {
+    margin: 0;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+  }
+}
+生成的css代码：
+
+nav ul {
+  margin: 0;
+}
+
+nav li {
+  display: inline-block;
+}
+
+nav a {
+  display: block;
+}
+属性也可以嵌套，比如border-color属性，可以写成：
+
+p {
+　　　border: {
+　　　　　color: red;
+　　　}
+　}
+注意，border后面必须加上冒号。 在嵌套的代码块内，可以使用&引用父元素。比如a:hover伪类，可以写成：
+
+a {
+　　　&:hover { color: #ffb3ff; }
+　}
+```
+
+### 3.导入
+- sass中如导入其他sass文件，最后编译为一个css文件，优于纯css的@import。其中注意的是如果sass文件的名字以“_”开头，则不会被编译成css文件
+- _reset.scss文件：
+```css
+html,
+body,
+ul,
+ol {
+   margin: 0;
+  padding: 0;
+}
+base.scss文件：
+@import 'reset';
+
+body {
+  font-size: 100% Helvetica, sans-serif;
+  background-color: #efefef;
+}
+最终生成的css:
+html, body, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #efefef;
+  font-size: 100% Helvetica, sans-serif;
+}
+
+
+```
+
+### 4.mixin（可以重用的代码块）
+```css
+@mixin left {
+　　　　float: left;
+　　　　margin-left: 10px;
+　　}
+使用@include命令，调用这个mixin。
+
+div {
+　　　　@include left;
+　　}
+mixin的强大之处，在于可以指定参数和缺省值。
+
+@mixin left($value: 10px) {
+　　　float: left;
+　　　margin-right: $value;
+　}
+```
+
+### 5.扩展/继承
+- sass可通过@extend来实现代码组合声明，使代码更加优越简洁。
+```css
+sass:
+
+.message {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  @extend .message;
+  border-color: green;
+}
+
+.error {
+  @extend .message;
+  border-color: red;
+}
+
+.warning {
+  @extend .message;
+  border-color: yellow;
+}
+生成的css:
+
+.message, .success, .error, .warning {
+  border: 1px solid #cccccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  border-color: green;
+}
+
+.error {
+  border-color: red;
+}
+
+.warning {
+  border-color: yellow;
+}
+``` 
+### 6.运算
+- sass可进行简单的加减乘除运算等
+```css
+sass:
+
+$var:100px;
+div {
+　　　　margin: (14px/2);
+　　　　top: 50px + 100px;
+　　　　right: $var * 0.5;
+　　}
+生成的css:
+
+div {
+　　　　margin: 7px;
+　　　　top: 150px;
+　　　　right: 50px;
+　　}
+```
+
+### 7. 自定义函数
+- SASS允许用户编写自己的函数。
+```css
+　　@function double($n) {
+　　　　@return $n * 2;
+　　}
+　　#sidebar {
+　　　　width: double(5px);
+　　}
+生成的css:
+
+#sidebar {
+　　　　width: 10px;
+　　}
+如果要返回字符串，可以这样写
+
+@function myurl($url){
+    @return "../#{$url}";   //返回一个拼接的新地址
+}
+body{
+    background-image: url(myurl(images/bg.jpg)); 
+}
+生成的css:
+
+body {
+  background-image: url("../images/bg.jpg"); }
+```
+<a name="移动端定宽网页适配方案"><a/>
+## viewport快速学习指南
+
+### viewport简介
+
+- 没错，就是viewport特性，一个移动专属的meta值，用于定义视口的各种行为。
+
+- 该特性最先由Apple引入，用于解决移动端的页面展示问题，后续被越来越多的厂商跟进。
+
+- 举个简单的例子来讲为什么会需要它：
+  
+> 我们知道用户大规模使用手机等移动设备来进行网页浏览器，其实得益于智能手持设备的兴起，也就是近几年的事。（还记得不久前的几年，满大街都还是诺基亚的天下么？）这时有一个很现实的问题摆在了厂商面前，用户并不能很好地通过手机等设备访问网页，因为屏幕太小。
+
+#### layout viewport
+
+- Apple也发现了这个问题，并且适时的出现，它提出了一个方案用来解决这个问题。在iOS Safari中定义了一个viewport meta标签，用来创建一个虚拟的布局视口（layout viewport），而这个视口的分辨率接近于PC显示器，Apple将其定义为**980px**（其他厂商各有不同①）。
+
+> ①的描述大致如下，数值不一定持续准确，厂商可能更改，但这个绝对值其实并非特别重要： iOS, Android基本都是: 980px BlackBerry: 1024px
+
+对于visual viewport，开发者一般只需要知道它的存在和概念就行，因为无法对它进行任何设置或者修改。很明显，visual viewport的尺寸不会是一个固定的值，甚至每款设备都可能不同。大致列几种常见设备的visual viewport尺寸：
+
+- iPhone4~iPhone5S: 320*480px
+- iPhone6~iPhone6S: 375*627px
+- iPhone6 Plus~iPhone6S Plus: 414*736px
+
+- 以iPhone4S为例，会在其320px②的visual viewport上，创建一个宽980px的layout viewport，于是用户可以在visual viewport中拖动或者缩放网页，来获得良好的浏览效果；布局视口用来配合CSS渲染布局，当我们定义一个容器的宽度为100%时，这个容器的实际宽度是980px而不是320px，通过这种方式大部分网页就能以缩放的形式正常显示在手机屏幕上了。
+
+> ②的描述大致如下： 早期移动前端开发工程师常能见到宽640px的设计稿，原因就是UI工程师以物理屏幕宽度为320px的iPhone4-iPhone5S作为参照设计； 当然，现在你还可能会见到750px和1242px尺寸的设计稿，原因当然是iPhone6的出现
+
+### viewport特性
+
+- 通常情况下，viewport有以下6种设置。当然厂商可能会增加一些特定的设置，比如iOS Safari7.1增加了一种在网页加载时隐藏地址栏与导航栏的设置：minimal-ui，不过随后又将之移除了。
+
+| Name         | Value        |  描述        |
+| -------------------------   | ----------  | :----------:  |
+| width   | 正整数或device-width|   定义视口的宽度，单位为像素   |
+| height   | 正整数或device-width |   定义视口的高度，单位为像素   |
+| initial-scale  | [0.0-10.0] |   定义初始缩放值   |
+| minimum-scale  | [0.0-10.0] |   定义缩小最小比例，它必须小于或等于maximum-scale设置 |
+| maximum-scale  | [0.0-10.0]css3 |   定义放大最大比例，它必须大于或等于minimum-scale设置  |
+| user-scalable    | yes/no |   定义是否允许用户手动缩放页面，默认值yes |
+
+### width
+
+width被用来定义layout viewport的宽度，如果不指定该属性（或者移除viewport meta标签），则layout viewport宽度为厂商默认值。如：iPhone为980px；
+
+* 举个例子：
+  ```html
+  <meta name="viewport" content="width=device-width" />
+  ```
+> 此时的layout viewport将成为ideal viewport，因为layout viewport宽度与设备视觉视口宽度一致了。除了width之外，还有一个属性定义也能实现ideal viewport，那就是initial-scale。
+
+### height
+与width类似，但实际上却不常用，因为没有太多的use case。
+
+### initial-scale
+* 如果想页面默认以某个比例放大或者缩小然后呈现给用户，那么可以通过定义initial-scale来完成。
+
+> initial-scale用于指定页面的初始缩放比例，假定你这样定义：
+
+```html
+<meta name="viewport" content="initial-scale=2" />
+```
+- 那么用户将会看到2倍大小的页面内容。
+
+- 在说width的时候，我们说到initial-scale也能实现ideal viewport，是的，你只需要这样做，也可以得到完美视口：
+
+```html
+<meta name="viewport" content="initial-scale=1" />
+```
+
+### maximum-scale
+在移动端，你可能会考虑用户浏览不便，然后给予用户放大页面的权利，但同时又希望是在一定范围内的放大，这时就可以使用maximum-scale来进行约束。
+
+- maximum-scale用于指定用户能够放大的比例。
+
+- 举个例子来讲：
+
+```html
+<meta name="viewport" content="initial-scale=1,maximum-scale=5" />
+```
+
+假设页面的默认缩放值initial-scale是1，那么用户最终能够将页面放大到这个初始页面大小的5倍。
+
+### minimum-scale
+类似maximum-scale的描述，不过minimum-scale是用来指定页面缩小比例的。
+
+通常情况下，为了有更好地体验，不会定义该属性的值比1更小，因为那样页面将变得难以阅读。
+
+### user-scalable
+- 如果你不想页面被放大或者缩小，通过定义user-scalable来约束用户是否可以通过手势对页面进行缩放即可。
+
+该属性的默认值为yes，即可被缩放（如果使用默认值，该属性可以不定义）；当然，如果你的应用不打算让用户拥有缩放权限，可以将该值设置为no。
+
+- 使用方法如下：
+
+```html
+<meta name="viewport" content="user-scalable=no" />
+```
+**移动端物理像素 px rem em像素单位**
+- 选择：
+
+		em是相对父亲字体大小的单位
+		rem相对根节点字体大小单位（root rem）
+		总结：屏幕实际实际接收px，rem和em是相对单位，按照一定的比例缩放
+		
+- 移动端设配最好采用rem像素单位，根据根节点的字体大小变化而变化
+
+- JavaScript脚本自动设配移动端
+
+```javascript
+ document.body.style.height = window.innerHeight + "px";
+    
+    /*动态改变根元素字体大小*/
+    function recalc() {
+    	// 客户端的宽度
+        var clientWidth = document.documentElement.clientWidth;
+        if(!clientWidth) return;
+        document.documentElement.style.fontSize = 40 * (clientWidth / 750) + 'px';
+        // 字体大小   = 1个rem单位表示多少个像素（设备的宽度   /设计宽度）
+    }
+
+    function initRecalc() {
+        recalc();
+        // if(浏览器支持横竖屏切换的事件){横竖屏事件}else{ resize事件 }
+        var resizeEvt = 'osrientationchange' in window ? 'orientationchange' : 'resize';
+        if(!document.addEventListener) return;
+        window.addEventListener(resizeEvt, recalc, false);
+        document.addEventListener('DOMContentLoaded', recalc, false);
+    }
+                
+    initRecalc();
+```
+[项目实战- 移动端](https://struggle-wjf.gitee.io/shop_mobile/)
+
+默认宽度375px，iPhone6
